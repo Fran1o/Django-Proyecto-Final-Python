@@ -18,13 +18,13 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
-                <a class="navbar-brand" >Futuro Blog</a>
+                <a class="navbar-brand">Futuro Blog</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href=" {% url 'home' %} ">Home</a></li>
                         {% if request.user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="#!">Logout</a>
+                        <li class="nav-item"><a class="nav-link" href="#!">Cerrar sesion</a>
                         </li>
 
                             {% else %}
@@ -38,52 +38,21 @@
             </div>
         </nav>
 
-
         {% block login %}
 
         {% endblock %}
 
-    
-        <!-- Page Content-->
-        <div class="container px-4 px-lg-5">
-            <!-- Heading Row-->
+        {% block signup %}
 
-            {% block portada %}
+        {% endblock %}
 
-            {% endblock %}
 
-            {% if request.user.is_authenticated %}
+        {% block contenido %}
 
-            <div class="card text-white bg-secondary my-5 py-4 text-center">
-                <div class="card-body">
-                        <p class="text-white m-0">Hola {{request.user.username}}, ya puedes adoptar a tu proxima mascota o dar en adopcion! </p>
-                </div>   
-            </div>
-
-            {% else %}
-
-                <div class="card text-white bg-secondary my-5 py-4 text-center">
-                    <div class="card-body">
-                            <p class="text-white m-0">Debes <a href="{% url 'login' %}">inciar sesion</a> o <a href="{% url 'signup' %}">registrarte</a> para adoptar a tu proxima mascota o dar en ad</p>
-                    </div>   
-                </div>
-
-            {% endif %}
-    
-            
-            <!-- Content Row-->
-
-            <div class="row gx-4 gx-lg-5">
-
-                {% block contenido %}
-
-                {% endblock %}
-                
+        {% endblock %}
         
-            </div>
 
-
-        </div>
+        
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>

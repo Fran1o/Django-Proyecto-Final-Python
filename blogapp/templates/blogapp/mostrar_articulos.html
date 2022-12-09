@@ -1,6 +1,6 @@
 {% extends 'blogapp/index.html' %}
 
-{% block contenido %}
+{% block portada %}
 
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
@@ -10,10 +10,10 @@
             <a class="btn btn-primary" href="#!">Este boton se podria borrar</a>
         </div>
     </div>
-    <!-- Call to Action-->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
-        <div class="card-body"><p class="text-white m-0">Para ver los articulos completos debes registrarte e iniciar sesion</p></div>
-    </div>
+
+{% endblock %}
+
+{% block contenido %}
 
     {% if articulos %}
 

@@ -4,6 +4,7 @@ from blogapp.forms import ArticuloFormulario
 
 # Create your views here.
 
+
 def crear_articulo(request):
 
     if request.method == "POST":
