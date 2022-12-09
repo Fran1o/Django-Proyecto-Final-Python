@@ -9,3 +9,18 @@ class Articulo(models.Model):
     informacion = models.CharField(max_length=200)
     #imagen = models.ImageField()
     #Debemos instalar Pillow
+
+class Usuario(models.Model):
+
+    #Datos Basicos
+    email = models.EmailField()
+    usuario = models.CharField(max_length=18)
+    #Contraseña
+
+    #Datos Personales
+    nombre = models.CharField(max_length=35)
+    apellido = models.CharField(max_length=35)
+    celular = models.IntegerField()
+    fecha_nacimiento = models.DateField()
+    rol = models.CharField(max_length=15) #Aquí es donde se determina si el usuario es de tipo administrador o de tipo standard
+    #Foto de Perfil
