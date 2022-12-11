@@ -2,21 +2,32 @@
 
 {% block contenido %}
 
-<div>
+<div class="container px-5 my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 rounded-3 shadow-lg">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <div class="h1 fw-light" style="color: rgb(63, 63, 252);">Ingrese los datos de su animal en adopcion</div>
+                        <p style="color: rgb(237, 99, 99);" class="mb-4 text-muted">Agradecemos que la foto sea lo mas cuadrada posible, gracias!</p>
+                    </div>
 
-    <h2>Ingrese los datos de su animal en adopcion</h2>
+                    <form method="post" enctype="multipart/form-data">
 
-    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
 
-        {% csrf_token %}
+                        {{ formulario.as_p }}
 
-        {{ formulario.as_p }}
-
-        <input type="submit" value="Publicar">
-    </form>
-
-
+                        <div class="d-grid">
+                            <input class="btn btn-primary btn-lg" type="submit" value="Publicar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
     
 
 

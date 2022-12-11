@@ -52,18 +52,10 @@
             <!-- Heading Row-->
 
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
+                <div class="col-lg-7">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="/codigo/blogapp/static/img/portada.jpg" alt="..." /></div>
                 <div class="col-lg-5">
-                    <h1 class="font-weight-light">ANIMADOPT</h1>
-                    <h3>Proyecto final de Python en CoderHouse</h3>
 
-                    <ul>
-                        <li><h4>Integrantes:</h4></li>
-                        <li>Diego Ibarra</li>
-                        <li>Francisco Gonzalez</li>
-                        <li>Carlos</li>
-                    </ul>
-                    
                     <p>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion!</p>
                     <p>Contanos en los comentarios que aspectos podemos mejorar!</p>
 
@@ -73,23 +65,17 @@
             {% else %}
 
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
+                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0;" src=" {% static 'img/portada.jpg' %} " alt="..." /></div>
                 <div class="col-lg-5">
-                    <h1 class="font-weight-light">ANIMADOPT</h1>
-                    <p>Proyecto final de Python en CoderHouse</p>
 
-                    <ul>
-                        <li><h4>Integrantes:</h4></li>
-                        <li>Diego Ibarra</li>
-                        <li>Francisco Gonzalez</li>
-                        <li>Carlos</li>
-                    </ul>
-                    
+
+                    <div class="text-center">
                     <p>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion, 
                         pero primero deberas registrarte e iniciar sesion!
                     </p>
-
+                    
                     <a class="btn btn-primary" href="{% url 'signup' %}">Registrarme</a>
+                    </div>
                 </div>
             </div>
 
@@ -111,7 +97,7 @@
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Proyecto final de Python en CoderHouse</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

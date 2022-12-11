@@ -8,16 +8,25 @@
 
         <div class="col-md-4 mb-5">
             <div class="card h-100">
-                <div class="card-body">
+                <div class="card-body; text-center">
                     <h2 class="card-title"> {{mascota.nombre}} </h2>
-                    <img src=" {{ mascota.imagen }} " alt=""> {{mascota.imagen}}
+
+                        {% if mascota.imagen %}
+
+                        <img class="img-fluid rounded mb-4 mb-lg-0;" src="{{ mascota.imagen.url }}">
+
+
+                        {% else %}
+
+                        <img src="https://via.placeholder.com/400x350">
+                        {% endif %}
                     <p class="card-text"> {{mascota.animal}} </p>
                     <p class="card-text"> {{mascota.raza}} </p>
                     <p class="card-text"> {{mascota.edad }} </p>
                     <p class="card-text"> {{mascota.color}} </p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary btn-sm" href=" {% url 'mostrar-mascota' mascota.id %} ">Ver articulo</a>
+                    <a class="btn btn-primary btn-sm" href=" {% url 'mostrar-mascota' mascota.id %} ">Mas info</a>
                 </div>
             </div>
         </div>
