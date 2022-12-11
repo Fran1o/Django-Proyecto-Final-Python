@@ -1,5 +1,41 @@
-{% extends 'blogapp/base.html' %}
+
+{% extends 'blogapp/base_sin_footer.html' %}
 
 {% block contenido %}
-    <h1>Hola {{articulo.titulo}} </h1>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading -->
+    <h1 class="fancy"> Ayudanos a encontrarle un hogar 
+    </h1>
+
+    <style>.fancy { font-family: fantasy; margin-top: 7%; }</style>
+
+    <!-- Project One -->
+    <div class="row">
+      <div class="col-md-7">
+        <a href="#">
+          <img class="img-fluid rounded mb-3 mb-md-0" src="https://via.placeholder.com/700x500" alt="">
+        </a>
+      </div>
+      <div class="col-md-5">
+        <h1>{{mascotas.nombre}}</h1>
+        <ul>
+            <li>
+                <p>Raza: {{mascotas.raza}}</p>
+            </li>
+            <li>
+                <p>Edad: {{mascotas.edad}}</p>
+            </li>
+            <li>
+                <p>Color: {{mascotas.color}}</p>
+            </li>
+        </ul>
+        <p>Aca podria ir informacion adiccional por ejemplo, en que condiciones se encuentra el animal o por que razones la persona lo esta dando en adopcion, si aparecio abandonado en algun lado, etc..</p>
+        <a class="btn btn-primary" href="#">Adoptar a {{mascotas.nombre}} </a>
+      </div>
+    </div>
+</div>
+
 {% endblock %}

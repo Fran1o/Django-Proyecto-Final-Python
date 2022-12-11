@@ -1,15 +1,23 @@
-{% extends 'blogapp/index.html' %}
+{% extends 'blogapp/base.html' %}
 
 {% block contenido %}
 
-    <form method="post">
+<div>
+
+    <h2>Ingrese los datos de su animal en adopcion</h2>
+
+    <form method="post" enctype="multipart/form-data">
 
         {% csrf_token %}
 
         {{ formulario.as_p }}
 
-        <input type="submit" value="Publicar articulo">
+        <input type="submit" value="Publicar">
     </form>
+
+
+</div>
+    
 
 
 {% endblock %}

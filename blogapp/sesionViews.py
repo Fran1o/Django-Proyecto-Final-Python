@@ -17,7 +17,7 @@ def login(request):
             user = authenticate(username = data["username"], password=data["password"])
 
             if user is not None:
-                login(request, user)
+                login(request,user)
                 return redirect("home")
 
             else:
@@ -41,7 +41,7 @@ def signup(request):
         
         if formulario.is_valid():
             formulario.save()
-            return redirect("home")
+            return redirect("login")
         
         else:
             return render(request, "blogapp/sesion/signup.html", {"form": formulario, "errors":formulario.errors})

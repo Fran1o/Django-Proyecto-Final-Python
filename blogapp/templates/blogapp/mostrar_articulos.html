@@ -1,31 +1,24 @@
 {% extends 'blogapp/index.html' %}
 
-{% block portada %}
-
-    <div class="row gx-4 gx-lg-5 align-items-center my-5">
-        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
-        <div class="col-lg-5">
-            <h1 class="font-weight-light">Futuro Blog</h1>
-            <p>Aca podria ir informacion del blog, para que esto sea estatico y no tengamos que generar un form para editar esta informacion</p>
-            <a class="btn btn-primary" href="#!">Este boton se podria borrar</a>
-        </div>
-    </div>
-
-{% endblock %}
-
 {% block contenido %}
 
-    {% if articulos %}
+    {% if mascotas %}
 
-        {% for articulo in articulos  %}
+        {% for mascota in mascotas  %}
 
         <div class="col-md-4 mb-5">
             <div class="card h-100">
                 <div class="card-body">
-                    <h2 class="card-title"> {{articulo.titulo}} </h2>
-                    <p class="card-text"> {{articulo.inforesumen}} </p>
+                    <h2 class="card-title"> {{mascota.nombre}} </h2>
+                    <img src=" {{ mascota.imagen }} " alt=""> {{mascota.imagen}}
+                    <p class="card-text"> {{mascota.animal}} </p>
+                    <p class="card-text"> {{mascota.raza}} </p>
+                    <p class="card-text"> {{mascota.edad }} </p>
+                    <p class="card-text"> {{mascota.color}} </p>
                 </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href=" {% url 'mostrar-articulo' articulo.id %} ">Ver articulo</a></div>
+                <div class="card-footer">
+                    <a class="btn btn-primary btn-sm" href=" {% url 'mostrar-mascota' mascota.id %} ">Ver articulo</a>
+                </div>
             </div>
         </div>
 

@@ -2,25 +2,24 @@ from django.db import models
 
 # Create your models here.
 
-class Articulo(models.Model):
+class Mascotas(models.Model):
 
-    titulo = models.CharField(max_length=200)
-    inforesumen = models.CharField(max_length=200)
-    informacion = models.CharField(max_length=200)
-    #imagen = models.ImageField()
-    #Debemos instalar Pillow
+    nombre = models.CharField(max_length=200)
+    animal = models.CharField(max_length=200)
+    raza = models.CharField(max_length=100)
+    edad = models.CharField(max_length=100)
+    color = models.CharField(max_length=200)
+    imagen = models.ImageField(upload_to='fotosmascotas', null=True, blank=True)
+    
 
-class Usuario(models.Model):
+class RegistrarUsuario(models.Model):
+#Datos para registar un usuario
 
-    #Datos Basicos
-    email = models.EmailField()
-    usuario = models.CharField(max_length=18)
-    #Contraseña
-
-    #Datos Personales
+    username = models.CharField(max_length=30)
     nombre = models.CharField(max_length=35)
     apellido = models.CharField(max_length=35)
+    email = models.EmailField()
     celular = models.IntegerField()
-    fecha_nacimiento = models.DateField()
-    rol = models.CharField(max_length=15) #Aquí es donde se determina si el usuario es de tipo administrador o de tipo standard
-    #Foto de Perfil
+    password = models.CharField(max_length=40)
+    verifypassword = models.CharField(max_length=40)
+

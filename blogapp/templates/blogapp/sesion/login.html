@@ -1,16 +1,40 @@
-{% extends 'blogapp/base.html' %}   
+{% extends 'blogapp/base_sin_footer.html' %}
 
-        {% block login %}
+{% block login %}
 
-        {% if errors %}
-            <p style="color: red">Error: {{errors}}</p>
-        {% endif %}
+<div class="container px-5 my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 rounded-3 shadow-lg">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <div class="h1 fw-light" style="color: rgb(63, 63, 252);">Inicia sesion y adopta a tu nueva mascota</div>
+                        <p class="mb-4 text-muted">Te recordamos que ademas podes ayudar a buscarles un hogar</p>
+                    </div>
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Log in">
-        </form>
+                    {% if errors %}
+                        <p style="color: red">Error: {{errors}}</p>
+                    {% endif %}
+                    <div class="text-center" >
+                    <form method="post">
 
-        {% endblock %}
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-grid">
+                            <input class="btn btn-primary btn-lg" type="submit" value="Iniciar sesion">
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
 

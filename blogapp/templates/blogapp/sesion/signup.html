@@ -2,16 +2,32 @@
 
 {% block signup %}
 
-        <p class="text-white m-0">Registrate</p></div>
+<div class="container px-5 my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 rounded-3 shadow-lg">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <div class="h1 fw-light" style="color: rgb(63, 63, 252);">Complete el formulario para registrarse</div>
+                        <p class="mb-4 text-muted">Una vez que tenga una cuenta usted podra adoptar a su nueva mascota!</p>
+                    </div>
 
-        {% if errors %}
-            <p style="color: red">Error: {{errors}}</p>
-        {% endif %}
+                    {% if errors %}
+                        <p style="color: red">Error: {{errors}}</p>
+                    {% endif %}
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Sign up">
-        </form>
+                        <div class="d-grid">
+                            <input class="btn btn-primary btn-lg" type="submit" value="Registrarme">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
 
         {% endblock %}
