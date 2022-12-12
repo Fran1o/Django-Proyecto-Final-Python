@@ -1,6 +1,8 @@
 {% extends 'blogapp/base_sin_footer.html' %}
 
-{% block contacto %}
+{% block contacto %}^
+
+{% load static %}
 
 <div class="container-fluid px-5 my-5">
     <div class="row justify-content-center">
@@ -8,7 +10,9 @@
             <div class="card border-0 rounded-3 shadow-lg overflow-hidden">
                 <div class="card-body p-0">
                     <div class="row g-0">
-                        <div class="col-sm-6 d-none d-sm-block bg-image"></div>
+                        <div class="col-sm-6 d-none d-sm-block bg-image; text-center">
+                            <img src="{% static 'img/portada.jpg' %}">
+                        </div>
                             <div class="col-sm-6 p-4">
                                 <div class="text-center">
                                 <div style="color: rgb(63, 63, 252) ;" class="h3 fw-light">Formulario de contacto</div>
