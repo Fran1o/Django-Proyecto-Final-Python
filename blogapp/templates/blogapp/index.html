@@ -33,7 +33,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesion</a></li>
 
                             {% endif %} 
-                        <li class="nav-item"><a class="nav-link" href="#!">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                     </ul>
                 </div>
             </div>
@@ -70,9 +70,9 @@
 
 
                     <div class="text-center">
-                    <p>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion, 
+                    <h5>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion, 
                         pero primero deberas registrarte e iniciar sesion!
-                    </p>
+                    </h5>
                     
                     <a class="btn btn-primary" href="{% url 'signup' %}">Registrarme</a>
                     </div>

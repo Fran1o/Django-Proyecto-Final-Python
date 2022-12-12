@@ -7,7 +7,8 @@ urlpatterns = [
     path('creararticulo/', crear_articulo),
     path('mascota/<id>', mostrar_articulo_completo, name="mostrar-mascota"),
     path("login/", login, name="login"),
-    path("signup/", signup, name="signup")
+    path("signup/", signup, name="signup"),
+    path("contacto/", contacto, name="contacto")
 ]
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from blogapp.models import Mascotas
-from blogapp.forms import MascotaFormulario
+from blogapp.models import Mascotas, Contacto
+from blogapp.forms import MascotaFormulario, ContactoFormulario
 
 # Create your views here.
 
@@ -56,3 +56,22 @@ def mostrar_articulo_completo(request, id):
 
     return render(request, "blogapp/mostrar_articulo_completo.html", {"mascotas": mascotas})
 
+
+def contacto(request):
+
+    if request.method == "POST":
+        formulario = ContactoFormulario(request.POST)
+
+        if formulario.is_valid():
+
+            data = formulario.cleaned_data
+            infocontacto = Contacto(nombre=data["nombre"], apellido=data["apellido"], email=data["email"], asunto=data["asunto"], mensaje=data["mensaje"])
+            infocontacto.save()
+
+        return redirect("home")
+
+    else:
+
+        formulario = ContactoFormulario()
+
+    return render(request, "blogapp/contacto.html", {"formulario": formulario})

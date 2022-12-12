@@ -23,3 +23,12 @@ class UsuarioRegisterFormulario(UserCreationForm):
     class Meta:
         model = User
         fields = ["username", "nombre", "apellido", "email", "celular"]
+
+
+class ContactoFormulario(forms.Form):
+
+    nombre = forms.CharField(max_length=50)
+    apellido = forms.CharField(max_length=50)
+    email = forms.EmailField(max_length=100)
+    asunto = forms.CharField(max_length=50)
+    mensaje = forms.CharField()

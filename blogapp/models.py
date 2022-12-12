@@ -23,3 +23,11 @@ class RegistrarUsuario(models.Model):
     password = models.CharField(max_length=40)
     verifypassword = models.CharField(max_length=40)
 
+class Contacto(models.Model):
+
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100)
+    asunto = models.CharField(max_length=50)
+    mensaje = models.TextField(max_length=500)
+
