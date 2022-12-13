@@ -1,41 +1,45 @@
 
-{% extends 'blogapp/base_sin_footer.html' %}
+{% extends 'blogapp/base.html' %}
 
 {% block contenido %}
 
 <!-- Page Content -->
 <div class="container">
 
-    <!-- Page Heading -->
-    <h1 class="fancy"> Ayudanos a encontrarle un hogar 
-    </h1>
-
+<!-- Page Heading -->
+      
+    <h1 style="color: whitesmoke;" class="fancy"> Ayudanos a encontrarle un hogar </h1>
     <style>.fancy { font-family: fantasy; margin-top: 7%; }</style>
 
     <!-- Project One -->
     <div class="row">
       <div class="col-md-7">
         <a href="#">
-          <img style="height: 500px; width: 500px;" src=" {{mascotas.imagen.url}} " alt="">
+          <img style="max-height: 900px;" class="img-fluid" src=" {{mascotas.imagen.url}} " alt="">
         </a>
       </div>
       <div class="col-md-5">
-        <h1>{{mascotas.nombre}}</h1>
+        
+        <h1 style="color: white; margin-top: 50px;">{{mascotas.nombre}}</h1>
         <ul>
-            <li>
-                <p>Raza: {{mascotas.raza}}</p>
+            <li style="color: rgb(255, 224, 145);" >
+              <p style="color: white;">Animal: {{mascotas.animal}}</p>
             </li>
-            <li>
-                <p>Edad: {{mascotas.edad}}</p>
+            <li style="color: rgb(255, 224, 145);" >
+                <p style="color: white;">Raza: {{mascotas.raza}}</p>
             </li>
-            <li>
-                <p>Color: {{mascotas.color}}</p>
+            <li style="color: rgb(255, 224, 145);" >
+                <p style="color: white;">Edad: {{mascotas.edad}}</p>
+            </li>
+            <li style="color: rgb(255, 224, 145);">
+                <p style="color: white;">Color: {{mascotas.color}}</p>
             </li>
         </ul>
-        <p>Aca podria ir informacion adiccional por ejemplo, en que condiciones se encuentra el animal o por que razones la persona lo esta dando en adopcion, si aparecio abandonado en algun lado, etc..</p>
+        <p style="color: white;">Aca podria ir informacion adiccional por ejemplo, en que condiciones se encuentra el animal o por que razones la persona lo esta dando en adopcion, si aparecio abandonado en algun lado, etc..</p>
         <a class="btn btn-primary" href="#">Adoptar a {{mascotas.nombre}} </a>
       </div>
     </div>
 </div>
+<br>
 
 {% endblock %}
