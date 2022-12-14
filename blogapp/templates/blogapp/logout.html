@@ -1,5 +1,18 @@
 {% extends 'blogapp/base_sin_footer.html' %}
 
 {% block logout %}
-<h1 style="color:white">has cerrado sesion</h1>
+<div class="card text-white bg-dark my-5 py-4 text-center">
+    <div class="card-body">
+        <h2 style="font-family: fantasy;" class="text-white m-0">Has cerrado sesion</h2>
+        <br>
+        <h3 style="font-family:'Times New Roman', Times, serif;" class="text-white m-0">gracias por usar</h3>
+        <br> 
+        <h3 style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);">ANIMADOPT</h3> 
+        <br>
+        <h3 style="font-family:'Times New Roman', Times, serif;">Esperamos que vuelvas pronto!</h3>
+        <br>
+        <h4 class="text-white m-0">Ir al <a href=" {% url 'home' %} ">HOME</a></h4>
+    </div>
+</div>
+
 {% endblock %}
