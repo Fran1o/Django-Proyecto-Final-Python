@@ -16,6 +16,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     </head>
     <body>
+
+        <style>
+            body{
+                background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);;
+            }
+        </style>
+
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
@@ -54,16 +61,16 @@
 
                 <div class="row gx-4 gx-lg-5 align-items-center my-5">
 
-                    <div class="col-lg-7">
-                        <img class="img-fluid rounded mb-4 mb-lg-0" src="/codigo/blogapp/static/img/portada.jpg" alt="..." />
-                    </div>
-
-                    <div class="col-lg-5">
+                    <div class="text-center">
 
                         <div class="text-center">
+                            <h1 style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" >ANIMADOPT</h1>
+                            <br>
                             <h5>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion!
+                                <br>
                                 Contanos en los comentarios que aspectos podemos mejorar!
                             </h5>
+                            <br>
                         </div>
 
                     </div>
@@ -73,17 +80,17 @@
 
                 <div class="row gx-4 gx-lg-5 align-items-center my-5">
                             
-                    <div class="col-lg-7">
-                        <img class="img-fluid rounded mb-4 mb-lg-0" src="/codigo/blogapp/static/img/portada.jpg" alt="..." />
-                    </div>
                             
-                    <div class="col-lg-5">
+                    <div class="text-center">
 
                             <div class="text-center">
+                                <h1 style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" >ANIMADOPT</h1>
+                                <br>
                                 <h5>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion, 
+                                    <br>
                                     pero primero deberas registrarte e iniciar sesion!
                                 </h5>
-                            
+                                <br>
                                 <a class="btn btn-primary" href="{% url 'signup' %}">Registrarme</a>
                                 <a class="btn btn-primary" href="{% url 'login' %}">Iniciar sesion</a>       
                             </div>
