@@ -7,7 +7,10 @@
         {% for mascota in mascotas  %}
 
         <div class="col-md-4 mb-5">
-            <div class="card h-100">
+            <div style="border-radius: 0.4em;
+                        box-shadow: 0.3em 0.3em 0.7em #00000015;
+                        transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                        border: rgb(66, 78, 246) 0.2em solid;" class="card h-100">
                 <div class="card-body; text-center;">
                     <div class="card-title" >
                         <h2> {{mascota.nombre}} </h2>
