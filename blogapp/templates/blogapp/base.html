@@ -35,15 +35,15 @@
                         
                         {% if request.user.is_authenticated %}
                         
-                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="#!">Cerrar sesion</a>
+                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="#!">Comentarios</a>
                         </li>
 
-                            {% else %}
+                        {% else %}
 
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'login' %}">Iniciar sesion</a></li>
 
-                            {% endif %} 
+                        {% endif %} 
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                     </ul>
                 </div>

@@ -24,16 +24,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link active" aria-current="page" href=" {% url 'home' %} ">Home</a></li>
-                        {% if request.user.is_authenticated == TRUE %}
-                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="#!">Cerrar sesion</a>
+                        {% if request.user.is_authenticated%}
+                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="#!">Comentarios</a></li>
                         </li>
 
-                            {% else %}
+                        {% else %}
 
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'login' %}">Iniciar sesion</a></li>
 
-                            {% endif %} 
+                        {% endif %} 
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                     </ul>
                 </div>
@@ -49,37 +49,47 @@
         <!-- Page Content-->
         <div class="container px-4 px-lg-5; text-center">
 
-            {% if request.user.is_authenticated == TRUE %}
+            {% if request.user.is_authenticated %}
             <!-- Heading Row-->
 
-            <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7">
-                    <img class="img-fluid rounded mb-4 mb-lg-0" src="/codigo/blogapp/static/img/portada.jpg" alt="..." /></div>
-                <div class="col-lg-5">
+                <div class="row gx-4 gx-lg-5 align-items-center my-5">
 
-                    <div class="text-center">
-                        <h5>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion!
-                            Contanos en los comentarios que aspectos podemos mejorar!
-                        </h5>
+                    <div class="col-lg-7">
+                        <img class="img-fluid rounded mb-4 mb-lg-0" src="/codigo/blogapp/static/img/portada.jpg" alt="..." />
+                    </div>
+
+                    <div class="col-lg-5">
+
+                        <div class="text-center">
+                            <h5>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion!
+                                Contanos en los comentarios que aspectos podemos mejorar!
+                            </h5>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
 
             {% else %}
 
-            <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0;" src=" {% static 'img/portada.jpg' %} " alt="..." /></div>
-                <div class="col-lg-5">
-
-
-                    <div class="text-center">
-                    <h5>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion, 
-                        pero primero deberas registrarte e iniciar sesion!
-                    </h5>
-                    
-                    <a class="btn btn-primary" href="{% url 'signup' %}">Registrarme</a>
+                <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                            
+                    <div class="col-lg-7">
+                        <img class="img-fluid rounded mb-4 mb-lg-0" src="/codigo/blogapp/static/img/portada.jpg" alt="..." />
                     </div>
-                </div>
-            </div>
+                            
+                    <div class="col-lg-5">
+
+                            <div class="text-center">
+                                <h5>En esta app web podras adoptar a tu nueva mascota o tambien dar en adopcion, 
+                                    pero primero deberas registrarte e iniciar sesion!
+                                </h5>
+                            
+                                <a class="btn btn-primary" href="{% url 'signup' %}">Registrarme</a>
+                                <a class="btn btn-primary" href="{% url 'login' %}">Iniciar sesion</a>       
+                            </div>
+
+                    </div>
+                </div> 
 
             {% endif %}
     
