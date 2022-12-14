@@ -1,5 +1,5 @@
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import authenticate, login as dj_login
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from blogapp.forms import UsuarioRegisterFormulario
 
@@ -17,7 +17,7 @@ def login(request):
             user = authenticate(username = data["username"], password=data["password"])
 
             if user is not None:
-                login(request,user)
+                dj_login(request,user)
                 return redirect("home")
 
             else:
@@ -49,3 +49,5 @@ def signup(request):
 
     formulario = UsuarioRegisterFormulario()
     return render(request, "blogapp/sesion/signup.html", {"form": formulario})
+
+
