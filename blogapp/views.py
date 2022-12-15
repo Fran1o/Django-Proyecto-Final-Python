@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from blogapp.models import Mascotas, Contacto
-from blogapp.forms import MascotaFormulario, ContactoFormulario
+from blogapp.models import Mascotas, Contacto, Adoptar
+from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario
 
 # Create your views here.
 
@@ -50,6 +50,7 @@ def mostrar_articulos(request):
 
         return render(request, "blogapp/mostrar_articulos.html", {"mascotas": mascotas})
 
+
 def mostrar_articulo_completo(request, id):
 
     mascotas = Mascotas.objects.get(id=id)
@@ -75,3 +76,11 @@ def contacto(request):
         formulario = ContactoFormulario()
 
     return render(request, "blogapp/contacto.html", {"formulario": formulario})
+
+
+def mostrar_form_adoptar(request, id):
+
+    mascotas = Mascotas.objects.get(id=id)
+        
+    return render(request, "blogapp/form_adoptar.html", {"mascotas": mascotas})
+
