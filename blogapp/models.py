@@ -31,4 +31,6 @@ class Contacto(models.Model):
     asunto = models.CharField(max_length=50)
     mensaje = models.TextField(max_length=500)
 
-#hola nada
+class Nada(models.Model):
+
+    test = models.CharField(max_length=50)
