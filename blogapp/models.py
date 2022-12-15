@@ -31,6 +31,11 @@ class Contacto(models.Model):
     asunto = models.CharField(max_length=50)
     mensaje = models.TextField(max_length=500)
 
-class Nada(models.Model):
 
-    test = models.CharField(max_length=50)
+class Adoptar(models.Model):
+
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    celular = models.IntegerField()
+    direccion = models.CharField(max_length=200)
+    

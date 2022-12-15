@@ -32,3 +32,11 @@ class ContactoFormulario(forms.Form):
     email = forms.EmailField(max_length=100)
     asunto = forms.CharField(max_length=50)
     mensaje = forms.CharField()
+
+
+class AdoptarFormulario(forms.Form):
+
+    nombre = forms.CharField(max_length=50)
+    apellido = forms.CharField(max_length=50)
+    celular = forms.IntegerField()
+    direccion = forms.CharField(max_length=200)

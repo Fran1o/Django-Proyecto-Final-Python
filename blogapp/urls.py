@@ -10,7 +10,8 @@ urlpatterns = [
     path("login/", login, name="login"),
     path("signup/", signup, name="signup"),
     path("contacto/", contacto, name="contacto"),
-    path("logout/", LogoutView.as_view(template_name="blogapp/logout.html"), name="logout")
+    path("adoptar/<id>", mostrar_form_adoptar, name="adoptar"),
+    path("logout/", LogoutView.as_view(template_name="blogapp/logout.html"), name="logout"),
 ]
 
 
