@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from blogapp.models import Mascotas, Contacto, Adoptar
 from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario
 
@@ -77,10 +77,28 @@ def contacto(request):
 
     return render(request, "blogapp/contacto.html", {"formulario": formulario})
 
-
-def mostrar_form_adoptar(request, id):
+def funcion_adoptar(request, id):
 
     mascotas = Mascotas.objects.get(id=id)
-        
-    return render(request, "blogapp/form_adoptar.html", {"mascotas": mascotas})
 
+    if request.method == "POST":
+        formulario = AdoptarFormulario(request.POST)
+
+        if formulario.is_valid():
+
+            data = formulario.cleaned_data
+            infoadoptante = Adoptar(nombre=data["nombre"], apellido=data["apellido"], celular=data["celular"], direccion=data["direccion"])
+            infoadoptante.save()
+
+        return redirect("adopt")
+
+    else:
+
+        formulario = AdoptarFormulario()
+
+    return render(request, "blogapp/form_adoptar.html", {"formulario": formulario, "mascotas": mascotas})
+
+
+def adopt(request):
+
+    return render(request, "blogapp/adopt.html") 

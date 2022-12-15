@@ -15,13 +15,14 @@
                     <form method="post" enctype="multipart/form-data">
 
                         {% csrf_token %}
-
+                    
                         {{ formulario.as_p }}
-
+                    
                         <div class="d-grid">
                             <input class="btn btn-primary btn-lg" type="submit" value="Enviar">
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

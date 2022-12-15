@@ -35,7 +35,7 @@
                 <p style="color: white;">Color: {{mascotas.color}}</p>
             </li>
         </ul>
-        <p style="color: white;">Aca podria ir informacion adiccional por ejemplo, en que condiciones se encuentra el animal o por que razones la persona lo esta dando en adopcion, si aparecio abandonado en algun lado, etc..</p>
+      
         {% if request.user.is_authenticated%}
         <a class="btn btn-primary" href="{% url 'adoptar' mascotas.id %}">Adoptar a {{mascotas.nombre}} </a>
         {% else %}
