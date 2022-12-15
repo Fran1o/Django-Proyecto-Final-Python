@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from django.dispatch import receiver
-from message.models import *
-from message.forms import *
 
 # CVB
 
