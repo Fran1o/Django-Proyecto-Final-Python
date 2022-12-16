@@ -1,0 +1,31 @@
+{% extends 'blogapp/index.html' %}
+
+
+{% block contenido %}
+
+    <h2>Comentarios:</h2>
+    <p>Comentanos inquietudes y sujerencias para ayudar a la comunidad</p>
+
+    {% if errores %}
+        <p style="color: red"> {{errores}} </p>
+    {% endif %}
+ 
+    {% if list_comentarios %}
+    
+        {% for comen in list_comentarios %}
+        
+            
+            <li>{{comen.Remitente}}: {{comen.Contenido}}  |{{comen.Fecha}}</li>
+            
+            
+ 
+        
+        {% endfor %}
+    
+    {% else %}
+        <p>No hay comentarios de momento</p>
+    {% endif %}
+        <div class="card-footer">
+            <a class="btn btn-primary btn-sm" href=" {% url 'fcomen' %} ">Crear comentario</a>
+        </div>
+{% endblock %}

@@ -16,43 +16,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
-class MessagesList(LoginRequiredMixin, ListView):
+def mostrar_comen(request):
 
-    model = Coment
-    template_name = "comentarios/Coment_list.html"
+    comen = Coment.objects.all()
 
-class MessageDetail(LoginRequiredMixin, DetailView):
+    return render(request, "comenapp/comen_list.html", {"list_comentarios":comen})
 
-    model = Coment
-    template_name = "comentarios/Coment_detail.html"
+def form_comen(request):
 
-class MessageCreate(LoginRequiredMixin, CreateView):
-
-    model = Coment
-    success_url = "project/comentarios"
-    fields = ['Titulo','Remitente', 'Destinatario', 'Contenido', 'Fecha']
-# def MessageCreate(request):
-
-#     if request.method == "POST":
-#         comform = ComentForm(request.POST)
-
-#         if comform.is_valid():
-
-#             data = comform.cleaned_data
-#             mascotas = Coment(Titulo=data["Titulo"], Remitente=data["Remitente"], Destinatario=data["Destinatario"], Contenido=data["Contenido"], Fecha=data["Fecha"])
-#             mascotas.save()
-
-#         return redirect("home")
-
-#     else:
-
-#         comform = ComentForm()
-
-#     return render(request, "comenapp/Coment_form.html", {"comform": comform})
-   
+    if request.method == "POST":
+        fcomen = ComentForm(request.POST)
+        fecha = Coment.Fecha
+        if fcomen.is_valid():
+            data = fcomen.cleaned_data
+            comentario = Coment(nombre=data["Remitente"], Comentario=data["Contenido"], Fecha=data[fecha])
+            comentario.save()
     
+    fcomen = ComentForm()
 
-class MessageDelete(LoginRequiredMixin, DeleteView):
+    return render(request, "comenapp/comen_create.html", {"form_comentarios":fcomen})
 
-    model = Coment
-    success_url = "/comentarios/"
