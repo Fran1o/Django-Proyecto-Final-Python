@@ -4,9 +4,9 @@ from datetime import datetime
 
 # Create your models here.
 
-class Message(models.Model):
-    title = models.CharField(max_length=40, default="Mensaje")
-    sender = models.ForeignKey(User, related_name="sender", on_delete=models.CASCADE)
-    reciever = models.ForeignKey(User, related_name="reciever", on_delete=models.CASCADE)
-    content = models.CharField(max_length=1000)
-    date = models.DateField(default=datetime.now)
+class Coment(models.Model):
+    Titulo = models.CharField(max_length=40, default="Titulo")
+    Remitente = models.ForeignKey(User, related_name="Remitente", on_delete=models.CASCADE)
+    Destinatario = models.ForeignKey(User, related_name="Destinatario", on_delete=models.CASCADE)
+    Contenido = models.CharField(max_length=1000)
+    Fecha = models.DateField(default=datetime.now)

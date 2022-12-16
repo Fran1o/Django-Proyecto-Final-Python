@@ -1,8 +1,8 @@
 from django import forms
 
-class MessagesForm(forms.Form):
-    title = forms.CharField(max_length=40)
-    sender = forms.CharField(max_length=60)
-    reciever = forms.CharField(max_length=60)
-    content = forms.CharField(max_length=1000)
-    date = forms.DateField()
+class ComentForm(forms.Form):
+    Titulo = forms.CharField(max_length=40)
+    Remitente = forms.CharField(max_length=60)
+    Destinatario = forms.CharField(max_length=60)
+    Contenido = forms.CharField(max_length=1000)
+    Fecha = forms.DateField()
