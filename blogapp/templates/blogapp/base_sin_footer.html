@@ -36,13 +36,12 @@
                         {% if request.user.is_authenticated%}
                         
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a></li>
-                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="#!">Comentarios</a>
-                        </li>
-
+                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'comentarios' %}">Comentarios</a></li>
                         {% else %}
 
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'login' %}">Iniciar sesion</a></li>
-
+                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'comentarios' %}">Comentarios</a>
+                        </li>
                         {% endif %} 
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                     </ul>
@@ -75,6 +74,10 @@
         {% endblock %}
 
         {% block adopt %}
+
+        {% endblock %}
+
+        {% block comentarios %}
 
         {% endblock %}
 

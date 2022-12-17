@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from blogapp.models import Mascotas, Contacto, Adoptar
 from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario
 
