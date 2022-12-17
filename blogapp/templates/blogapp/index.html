@@ -44,7 +44,7 @@
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                         {% endif %} 
                         
-                        
+                    
                     </ul>
                 </div>
             </div>
@@ -109,12 +109,12 @@
             
             <!-- Content Row-->
 
+            <div class="row gx-4 gx-lg-5">
+                {% block comentarios %}
 
-        </div>
-        
-
+                {% endblock %}
                 {% block contenido %}
-
+                
                 {% endblock %}
 
                 <div class="row gx-4 gx-lg-5">
@@ -123,11 +123,13 @@
 
                 {% endblock %}
 
+
+
                 </div>
             
     
             
-       
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Proyecto final de Python en CoderHouse</p></div>

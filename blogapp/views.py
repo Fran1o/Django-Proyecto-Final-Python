@@ -105,5 +105,6 @@ def adopt(request):
 
 def perfil_user(request):
 
+
     return render(request, "blogapp/perfil_user.html") 
 

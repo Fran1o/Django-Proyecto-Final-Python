@@ -1,7 +1,5 @@
-{% extends 'blogapp/base.html' %}
+{% extends 'blogapp/base_sin_footer.html' %}
 
 {% block contenido %}
-
-<h1 style="color: white;"> Hola {{request.user.username}} </h1>
-
+<h1>{{ request.user.username}}</h1>
 {% endblock %}
