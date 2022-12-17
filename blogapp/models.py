@@ -24,6 +24,7 @@ class Contacto(models.Model):
 class Adoptar(models.Model):
 
     nombre = models.CharField(max_length=50)
+    nombre2 = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     celular = models.IntegerField()
     direccion = models.CharField(max_length=200)
