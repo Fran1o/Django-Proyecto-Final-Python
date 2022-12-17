@@ -1,7 +1,7 @@
 {% extends 'blogapp/index.html' %}
 
 
-{% block contenido %}
+{% block comentarios %}
 
     <h2>Comentarios:</h2>
     <p>Comentanos inquietudes y sujerencias para ayudar a la comunidad</p>
@@ -13,9 +13,14 @@
     {% if list_comentarios %}
     
         {% for comen in list_comentarios %}
-           
-            <li>{{comen.Remitente}}: {{comen.Contenido}}  |{{comen.Fecha}}</li>
-            
+            <div class="col-md-3 mb-2">
+                <div style="border-radius: 0.4em;
+                            box-shadow: 0.3em 0.3em 0.7em #00000015;
+                            transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                            border: rgb(66, 78, 246) 0.2em solid;" class="card h-100">
+                <li>{{comen.Remitente}}: {{comen.Contenido}}  |{{comen.Fecha}}</li>
+                </div>
+            </div>    
         {% endfor %}
     
     {% else %}
