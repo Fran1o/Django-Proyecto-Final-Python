@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -10,18 +11,6 @@ class Mascotas(models.Model):
     edad = models.CharField(max_length=100)
     color = models.CharField(max_length=200)
     imagen = models.ImageField(upload_to='fotosmascotas', null=True, blank=True)
-    
-
-class RegistrarUsuario(models.Model):
-#Datos para registar un usuario
-
-    username = models.CharField(max_length=30)
-    nombre = models.CharField(max_length=35)
-    apellido = models.CharField(max_length=35)
-    email = models.EmailField()
-    celular = models.IntegerField()
-    password = models.CharField(max_length=40)
-    verifypassword = models.CharField(max_length=40)
 
 class Contacto(models.Model):
 
@@ -39,3 +28,11 @@ class Adoptar(models.Model):
     celular = models.IntegerField()
     direccion = models.CharField(max_length=200)
     
+class Avatar(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    img = models.ImageField(upload_to='fotosusuarios', null=True, blank=True)
+
+    
+
+

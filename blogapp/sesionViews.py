@@ -1,6 +1,5 @@
 from django.contrib.auth import authenticate, login as dj_login
 from django.contrib.auth.forms import AuthenticationForm
-from blogapp.models import RegistrarUsuario
 from django.shortcuts import render, redirect
 from blogapp.forms import UsuarioRegisterFormulario
 

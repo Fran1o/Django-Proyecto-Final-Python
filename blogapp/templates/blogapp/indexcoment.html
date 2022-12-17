@@ -14,29 +14,26 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href=" {% static 'css/styles.css' %} " rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     </head>
     <body>
+
         <style>
             body{
-                background: rgb(2,0,36);
-            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+                background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
             }
         </style>
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-5">
 
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container px-2">
                 <img class="navbar-brand" src="{% static 'assets/img/catslepp.svg' %}" width="100" height="100" alt="..." />
-            
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link active" aria-current="page" href=" {% url 'home' %} ">Home</a></li>
-                        
                         {% if request.user.is_authenticated%}
-                        
-                            <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
+                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
                             <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'lcomen' %}">Comentarios</a></li>
                             <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                             <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(159, 201, 255);" class="nav-link" href="#!">Hola {{request.user.username}}!</a></li>
@@ -47,46 +44,51 @@
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                         {% endif %} 
                         
+                        
                     </ul>
                 </div>
             </div>
         </nav>
+        
+            
+        
+            
 
         {% block login %}
 
         {% endblock %}
 
-        {% block contenido %}
+    
+        <!-- Page Content-->
+        <div class="container px-4 px-lg-5; text-center">
+            <!-- Heading Row-->
 
-        {% endblock %}
+                <div class="row gx-4 gx-lg-5 align-items-center my-5">
 
-        {% block contacto %}
+                    <div class="text-center">
 
-        {% endblock %}
-
-        {% block signup %}
-
-        {% endblock %}
-
-        {% block logout %}
-
-        {% endblock %}
-
-        {% block adoptar %}
-
-        {% endblock %}
-
-        {% block adopt %}
-
-        {% endblock %}
-
-        {% block comentarios %}
-
-        {% endblock %}
-
-
-
+                        <div class="text-center">
+                            <h1 style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" >ANIMADOPT</h1>
+                            <br>
+                            <div class="h1 fw-light" style="color: rgb(63, 63, 252);">Contanos que aspectos podemos mejorar</div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+        </div>
+          
+            <!-- Content Row-->
         
+
+                {% block contenido %}
+
+                {% endblock %}
+
+            
+    
+            
+       
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

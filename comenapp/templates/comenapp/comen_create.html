@@ -1,15 +1,49 @@
-{% extends 'blogapp/index.html' %}
+{% extends 'blogapp/indexcoment.html' %}
 
 
 {% block contenido %}
-<form method="post" enctype="multipart/form-data">
-    
-    {% csrf_token %}
-                    
-    {{ form_comentarios.as_p }}
 
-    <div class="card-footer">
-        <input class="btn btn-primary btn-sm" type="submit" value="Comentar">
+<div class="container px-5 my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 rounded-3 shadow-lg">
+                <div class="card-body p-4; text-center">
+                    <div class="text-center">
+                        <div class="h1 fw-light" style="color: rgb(63, 63, 252);">Comentarios</div>
+                        <p style="color: rgb(237, 99, 99);" class="mb-4 text-muted">inquietudes y sujerencias para ayudar a la comunidad</p>
+                    </div>
+                    
+                        {% if request.user.is_authenticated %}
+                            
+                        <form method="post" >
+    
+                            {% csrf_token %}
+                                            
+                            {{ form_comentarios.as_p }}
+                            
+                            <div class="card-footer">
+                                <input class="btn btn-primary btn-sm" type="submit" value="Comentar">
+                            </div>
+
+                        </form>
+                        {% else %}
+
+                        <form method="post" >
+    
+                            {% csrf_token %}
+                                            
+                            {{ form_comentarios.as_p }}
+                            
+                            <div class="card-footer">
+                                <input class="btn btn-primary disabled" type="submit" value="Comentar">
+                            </div>
+
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+
 {% endblock %}

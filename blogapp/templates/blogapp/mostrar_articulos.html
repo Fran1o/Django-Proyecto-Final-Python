@@ -1,12 +1,12 @@
 {% extends 'blogapp/index.html' %}
 
-{% block contenido %}
+{% block mascotas %}
 
     {% if mascotas %}
 
         {% for mascota in mascotas  %}
 
-        <div class="col-md-4 mb-5">
+        <div class="col-md-4 mb-5; text-center">
             <div style="border-radius: 0.4em;
                         box-shadow: 0.3em 0.3em 0.7em #00000015;
                         transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);

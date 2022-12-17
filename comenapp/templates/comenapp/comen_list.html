@@ -1,27 +1,49 @@
-{% extends 'blogapp/index.html' %}
+{% extends 'blogapp/indexcoment.html' %}
 
 
 {% block contenido %}
 
-    <h2>Comentarios:</h2>
-    <p>Comentanos inquietudes y sujerencias para ayudar a la comunidad</p>
+            <div class="container px-5 my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card border-0 rounded-3 shadow-lg">
+                            <div class="card-body p-4; text-center">
+                                <div class="text-center">
+                                    <div class="h1 fw-light" style="color: rgb(63, 63, 252);">Comentarios</div>
+                                    <p class="mb-4 text-muted">inquietudes y sujerencias para ayudar a la comunidad</p>
+                                </div>
+                                {% if errores %}
+                                    <p style="color: red"> {{errores}} </p>
+                                {% endif %}
+                            
+                                {% if list_comentarios %}
+                                
+                                    {% for comen in list_comentarios %}
+                                    
+                                        <li>{{comen.remitente}}: {{comen.contenido}}  |{{comen.fecha}}</li>
+                                        
+                                    {% endfor %}
+                                
+                                {% else %}
+                                    <h5>No hay comentarios aún</h5>
+                                {% endif %}
 
-    {% if errores %}
-        <p style="color: red"> {{errores}} </p>
-    {% endif %}
- 
-    {% if list_comentarios %}
-    
-        {% for comen in list_comentarios %}
-           
-            <li>{{comen.Remitente}}: {{comen.Contenido}}  |{{comen.Fecha}}</li>
-            
-        {% endfor %}
-    
-    {% else %}
-        <p>No hay comentarios de momento</p>
-    {% endif %}
-        <div class="card-footer">
-            <a class="btn btn-primary btn-sm" href=" {% url 'fcomen' %} ">Crear comentario</a>
-        </div>
+                                {% if request.user.is_authenticated %}
+                                    
+                                <div class="card-footer">
+                                        <a class="btn btn-primary btn-sm" href=" {% url 'fcomen' %} ">Crear comentario</a>
+                                </div>
+
+                                {% else %}
+
+                                <div style="background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);" class="card-footer">
+                                    <p class="mb-4 text-muted">Recuerda que debes inicar sesion para dejar un comentario</p>
+                                    <a class="btn btn-primary disabled" href="#!">Crear comentario</a>
+                                </div>
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 {% endblock %}

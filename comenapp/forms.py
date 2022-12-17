@@ -1,6 +1,7 @@
 from django import forms
 
 class ComentForm(forms.Form):
-    Remitente = forms.CharField(max_length=60)  
-    Contenido = forms.CharField(max_length=1000)
-    Fecha = forms.DateField()
+    remitente = forms.CharField(max_length=30)  
+    contenido = forms.CharField(max_length=1000)
+    fecha = forms.IntegerField()
+

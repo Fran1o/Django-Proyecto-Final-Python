@@ -19,7 +19,7 @@
 
         <style>
             body{
-                background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);;
+                background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
             }
         </style>
 
@@ -35,14 +35,16 @@
                         {% if request.user.is_authenticated%}
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'lcomen' %}">Comentarios</a></li>
-
+                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
+                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(159, 201, 255);" class="nav-link" href="#!">Hola {{request.user.username}}!</a></li>
                         {% else %}
 
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'login' %}">Iniciar sesion</a></li>
-                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'comentarios' %}">Comentarios</a></li>
-                        {% endif %} 
+                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'lcomen' %}">Comentarios</a></li>
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
-                        <li class="small text-muted mb-4 mb-lg-0">Hola {{request.user.username}}!</a></li>
+                        {% endif %} 
+                        
+                        
                     </ul>
                 </div>
             </div>
@@ -114,6 +116,14 @@
                 {% block contenido %}
 
                 {% endblock %}
+
+                <div class="row gx-4 gx-lg-5">
+
+                {% block mascotas %}
+
+                {% endblock %}
+
+                </div>
             
     
             
