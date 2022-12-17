@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from blogapp.models import Mascotas, Contacto, Adoptar
-from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario
+from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario, User
 
 # Create your views here.
 
@@ -102,3 +102,9 @@ def funcion_adoptar(request, id):
 def adopt(request):
 
     return render(request, "blogapp/adopt.html") 
+
+def perfil_user(request):
+
+
+    return render(request, "blogapp/perfil_user.html") 
+

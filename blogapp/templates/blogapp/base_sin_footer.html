@@ -26,8 +26,9 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
-                <a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="navbar-brand" href="{% url 'home' %}">ANIMADOPT
-                </a>
+
+                <img class="navbar-brand" src="{% static 'assets/img/catslepp.svg' %}" width="100" height="100" alt="..." />
+            
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -35,16 +36,17 @@
                         
                         {% if request.user.is_authenticated%}
                         
-                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a></li>
-                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="#!">Comentarios</a>
-                        </li>
-
+                            <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
+                            <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'lcomen' %}">Comentarios</a></li>
+                            <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
+                            <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(159, 201, 255);" class="nav-link" href="{% url 'perfil' %}">Hola {{request.user.username}}!</a></li>
                         {% else %}
 
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'login' %}">Iniciar sesion</a></li>
-
-                        {% endif %} 
+                        <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'lcomen' %}">Comentarios</a></li>
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
+                        {% endif %} 
+                        
                     </ul>
                 </div>
             </div>
@@ -75,6 +77,10 @@
         {% endblock %}
 
         {% block adopt %}
+
+        {% endblock %}
+
+        {% block comentarios %}
 
         {% endblock %}
 

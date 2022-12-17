@@ -14,11 +14,11 @@ class MascotaFormulario(forms.Form):
 class UsuarioRegisterFormulario(UserCreationForm):
 
     #Datos de Usario
-    username = forms.CharField(max_length=30)
-    nombre = forms.CharField(max_length=35)
-    apellido = forms.CharField(max_length=35)
-    email = forms.EmailField()
-    celular = forms.IntegerField()
+    username = forms.CharField(label="username")
+    nombre = forms.CharField(label="nombre")
+    apellido = forms.CharField(label="apellido")
+    email = forms.EmailField(label="email")
+    celular = forms.IntegerField(label="celular")
 
     class Meta:
         model = User
