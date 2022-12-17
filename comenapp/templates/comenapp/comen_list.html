@@ -13,13 +13,9 @@
     {% if list_comentarios %}
     
         {% for comen in list_comentarios %}
-        
-            
+           
             <li>{{comen.Remitente}}: {{comen.Contenido}}  |{{comen.Fecha}}</li>
             
-            
- 
-        
         {% endfor %}
     
     {% else %}

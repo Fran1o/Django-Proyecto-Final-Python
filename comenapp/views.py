@@ -26,10 +26,10 @@ def form_comen(request):
 
     if request.method == "POST":
         fcomen = ComentForm(request.POST)
-        fecha = Coment.Fecha
+        
         if fcomen.is_valid():
             data = fcomen.cleaned_data
-            comentario = Coment(nombre=data["Remitente"], Comentario=data["Contenido"], Fecha=data[fecha])
+            comentario = Coment(Remitente=data["Remitente"], Contenido=data["Contenido"])
             comentario.save()
     
     fcomen = ComentForm()
