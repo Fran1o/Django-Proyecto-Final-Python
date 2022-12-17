@@ -8,7 +8,7 @@ urlpatterns = [
     path('creararticulo/', crear_articulo),
     path('mascota/<id>', mostrar_articulo_completo, name="mostrar-mascota"),
     path("login/", login, name="login"),
-    path("perfil/", perfil_user, name="perfil"),
+    path("perfil/<id>", perfil_user, name="perfil"),
     path("signup/", signup, name="signup"),
     path("contacto/", contacto, name="contacto"),
     path("adoptar/<id>", funcion_adoptar, name="adoptar"),

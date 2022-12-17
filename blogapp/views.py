@@ -105,7 +105,5 @@ def adopt(request):
 
 def perfil_user(request):
 
-    usuario = User.objects.all()
-
-    return render(request, "blogapp/perfil_user.html", {"usuario": usuario}) 
+    return render(request, "blogapp/perfil_user.html") 
 
