@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path , include
 from blogapp.views import *
 from blogapp.sesionViews import *
 from django.contrib.auth.views import LogoutView
@@ -13,6 +13,7 @@ urlpatterns = [
     path("adoptar/<id>", funcion_adoptar, name="adoptar"),
     path("adopt/", adopt, name="adopt"),
     path("logout/", LogoutView.as_view(template_name="blogapp/logout.html"), name="logout"),
+    path("comentarios/", include('comenapp.urls')),
 ]
 
 

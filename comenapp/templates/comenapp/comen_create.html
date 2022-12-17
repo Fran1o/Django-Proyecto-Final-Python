@@ -1,0 +1,15 @@
+{% extends 'blogapp/index.html' %}
+
+
+{% block contenido %}
+<form method="post" enctype="multipart/form-data">
+    
+    {% csrf_token %}
+                    
+    {{ form_comentarios.as_p }}
+
+    <div class="card-footer">
+        <input class="btn btn-primary btn-sm" type="submit" value="Comentar">
+    </div>
+</form>
+{% endblock %}
