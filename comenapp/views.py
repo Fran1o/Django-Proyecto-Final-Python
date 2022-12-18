@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from comenapp.models import *
 from comenapp.forms import *
 
@@ -6,15 +6,15 @@ from comenapp.forms import *
 # Create your views here.
 
 def form_comen(request):
-    comen = Coment.objects.all()
+    comen = Coments.objects.all()
     if request.method == "POST":
 
         fcomen = ComentForm(request.POST)
-        comen = Coment.objects.all()
+        comen = Coments.objects.all()
         if fcomen.is_valid():
                 
             data = fcomen.cleaned_data
-            comentario = Coment(remitente=data["remitente"], contenido=data["contenido"], fecha=data["fecha"])
+            comentario = Coments(remitente=data["remitente"], contenido=data["contenido"], fecha=data["fecha"])
             comentario.save()
 
         return render(request, "comenapp/comen_list.html")

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from comenapp.models import Coment
+from comenapp.models import Coments
 
 # Register your models here.
 
-admin.site.register(Coment)
+admin.site.register(Coments)

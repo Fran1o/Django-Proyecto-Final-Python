@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blogapp.models import Mascotas, Contacto, Adoptar 
+from blogapp.models import Mascotas, Contacto, Adoptar
 
 # Register your models here.
 
