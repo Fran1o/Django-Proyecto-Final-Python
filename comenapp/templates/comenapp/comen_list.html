@@ -13,15 +13,15 @@
                         <div class="h1 fw-light" style="color: rgb(63, 63, 252);">Comentarios</div>
                         <p style="color: rgb(237, 99, 99);" class="mb-4 text-muted">inquietudes y sujerencias para ayudar a la comunidad</p>
                     </div>
-                    {% if list_comentarios %}
+                    {% if listcomen %}
     
-                    {% for comen in list_comentarios %}
+                    {% for comen in listcomen %}
                         <div class="col-md-3 mb-2">
                             <div style="border-radius: 0.4em;
                                         box-shadow: 0.3em 0.3em 0.7em #00000015;
                                         transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                                         border: rgb(66, 78, 246) 0.2em solid;" class="card h-100">
-                            <li>{{comen.remitente}}: {{comen.contenido}}  |{{comen.fecha}}</li>
+                            <li>{{comen.contenido}}</li>
                             </div>
                         </div>    
                     {% endfor %}

@@ -7,21 +7,22 @@ from comenapp.forms import *
 
 def form_comen(request):
     comen = Coments.objects.all()
+    user= request.user.id
     if request.method == "POST":
 
         fcomen = ComentForm(request.POST)
-        comen = Coments.objects.all()
+        # comen = Coments.objects.all()
         if fcomen.is_valid():
                 
             data = fcomen.cleaned_data
-            comentario = Coments(remitente=data["remitente"], contenido=data["contenido"], fecha=data["fecha"])
+            comentario = Coments(contenido=data["contenido"])
             comentario.save()
 
-        return render(request, "comenapp/comen_list.html")
+        return render(request, "comenapp/comen_list.html", {"form_comentarios": fcomen, "listcomen": comen,})
             
     else:
 
         fcomen = ComentForm()
 
-    return render(request, "comenapp/comen_list.html", {"form_comentarios": fcomen, "list_comentarios": comen})
+    return render(request, "comenapp/comen_list.html", {"form_comentarios": fcomen, "listcomen": comen})
 
