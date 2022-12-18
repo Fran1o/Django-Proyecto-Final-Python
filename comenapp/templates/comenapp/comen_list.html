@@ -1,6 +1,7 @@
 {% extends 'blogapp/index.html' %}
 
 {% block comentarios %}
+
 {% if errores %}
 <p style="color: red"> {{errores}} </p>
 {% endif %}
@@ -36,34 +37,42 @@
         </div>
     </div>
 
-{% endblock %}
-{% block contenido %}
+
 {% if request.user.is_authenticated %}
-                            
-<form action="{% url 'home' %}" method="post" >
 
-    {% csrf_token %}
-                    
-    {{ form_comentarios.as_p }}
+<div class="text-center" >
+
+    <form method="post" >
+
+        {% csrf_token %}
+                        
+        {{ form_comentarios.as_p }}
+        
+        <div class="card-footer">
+            <input class="btn btn-primary btn-sm" type="submit" value="Comentar">
+        </div>
     
-    <div class="card-footer">
-        <input class="btn btn-primary btn-sm" type="submit" value="Comentar">
-    </div>
+    </form>
 
-</form>
+</div>                            
+
 {% else %}
 
-<form method="post" >
+<div class="text-center" >
 
-    {% csrf_token %}
-                    
-    {{ form_comentarios.as_p }}
+    <form method="post" >
+
+        {% csrf_token %}
+                        
+        {{ form_comentarios.as_p }}
+        
+        <div style="background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);" class="card-footer">
+            <p class="mb-4 text-muted">Recuerda que debes inicar sesion para dejar un comentario</p>
+            <a class="btn btn-primary disabled" href="#!">Comentar</a>
     
-    <div style="background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);" class="card-footer">
-        <p class="mb-4 text-muted">Recuerda que debes inicar sesion para dejar un comentario</p>
-        <a class="btn btn-primary disabled" href="#!">Comentar</a>
+    </form>
 
-</form>
+</div>
 {% endif %}
 
 

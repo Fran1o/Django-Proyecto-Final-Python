@@ -40,3 +40,9 @@ class AdoptarFormulario(forms.Form):
     apellido = forms.CharField(max_length=50)
     celular = forms.IntegerField()
     direccion = forms.CharField(max_length=200)
+
+class AvatarForm(forms.Form):
+
+
+    model = User
+    img = forms.ImageField(label="Ingrese una foto")

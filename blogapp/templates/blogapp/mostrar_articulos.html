@@ -10,7 +10,7 @@
             <div style="border-radius: 0.4em;
                         box-shadow: 0.3em 0.3em 0.7em #00000015;
                         transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                        border: rgb(66, 78, 246) 0.2em solid;" class="card h-100">
+                        border: rgba(0, 0, 0, 0.655) 0.2em solid;" class="card h-100">
                 <div class="card-body; text-center;">
                     <div class="card-title" >
                         <h2> {{mascota.nombre}} </h2>
@@ -25,10 +25,6 @@
                         <img src="https://via.placeholder.com/400x350">
 
                         {% endif %}
-                    <p class="card-text"> <h4>Animal:</h4>{{mascota.animal}} </p>
-                    <p class="card-text"> <h4>Raza:</h4>{{mascota.raza}} </p>
-                    <p class="card-text"> <h4>Edad:</h4>{{mascota.edad}} </p>
-                    <p class="card-text"> <h4>Color:</h4>{{mascota.color}} </p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary btn-sm" href=" {% url 'mostrar-mascota' mascota.id %} ">Mas info</a>
