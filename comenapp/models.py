@@ -8,7 +8,7 @@ class Coments(models.Model):
     contenido = models.CharField(max_length=1000)
     fecha = models.DateField()
 
-class Coments2(models.Model):
+class Coments3(models.Model):
     
     remitente = models.CharField(max_length=30)
     contenido = models.CharField(max_length=1000)
