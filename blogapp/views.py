@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from blogapp.models import Mascotas, Contacto, Adoptar, User, Avatar
-from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario, AvatarForm
+from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario, AvatarForm, UserEditForm, AvatarEditForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+#Form para crear mascotas
 
 def crear_articulo(request, id):
 
@@ -26,6 +27,7 @@ def crear_articulo(request, id):
 
     return render(request, "blogapp/crear_articulo_form.html", {"formulario": formulario, "usuarios": usuarios})
 
+#Mostrando mascotas
 
 def mostrar_articulos(request):
 
@@ -52,6 +54,7 @@ def mostrar_articulos(request):
 
         return render(request, "blogapp/mostrar_articulos.html", {"mascotas": mascotas})
 
+#Views para mostrar info mascotas
 
 def mostrar_articulo_completo(request, id):
 
@@ -59,6 +62,7 @@ def mostrar_articulo_completo(request, id):
 
     return render(request, "blogapp/mostrar_articulo_completo.html", {"mascotas": mascotas})
 
+#Form contacto
 
 def contacto(request):
 
@@ -78,6 +82,8 @@ def contacto(request):
         formulario = ContactoFormulario()
 
     return render(request, "blogapp/contacto.html", {"formulario": formulario})
+
+#Form adoptar mascota
 
 def funcion_adoptar(request, id):
 
@@ -106,15 +112,44 @@ def adopt(request):
     return render(request, "blogapp/adopt.html") 
 
 
+#Perfil del usuario
 @login_required
 
 def perfil_user(request, id):
 
     usuarios = User.objects.get(id=id)
 
+    if request.user.is_authenticated:
+
+        imagen_model = Avatar.objects.filter(user=request.user.id).order_by("-id")
+
+        if len(imagen_model) > 0:
+
+            imagen_url = imagen_model[0].img.url
+
+            return render(request, "blogapp/perfil.html", {"usuarios": usuarios, "imagen_url": imagen_url})
+
+        else:
+
+            imagen_url = ""
+
+    else:
+        imagen_url = ""
+    
+    return render(request, "blogapp/perfil.html", {"usuarios": usuarios, "imagen_url": imagen_url})
+
+
+#Agregar foto
+
+def agregar_foto(request, id):
+
+    usuarios = User.objects.get(id=id)
+
     if request.method == "POST":
 
         formulario = AvatarForm(request.POST, request.FILES)
+
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")
 
         if formulario.is_valid():
 
@@ -124,41 +159,104 @@ def perfil_user(request, id):
             avatar = Avatar(user=usuario, img=data['img'])
             avatar.save()
 
-            imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
-            imagen_url = imagen_model.img.url
+            if len(imagen_model) > 0:
 
-        return render(request, "blogapp/perfil_user.html", {"usuarios": usuarios, "formulario": formulario, "imagen_url": imagen_url})
+                imagen_url = imagen_model[0].img.url
+
+                return render(request, "blogapp/agregar_foto.html", {"usuarios": usuarios, "formulario": formulario, "imagen_url": imagen_url})
+
+            else:
+
+                imagen_url = ""
+
+                return render(request, "blogapp/agregar_foto.html", {"formulario": formulario, "usuarios": usuarios, "imagen_url": imagen_url})
+
+        else:
+
+            imagen_url = ""
+
+            return render(request, "blogapp/agregar_foto.html", {"formulario": formulario, "usuarios": usuarios, "imagen_url": imagen_url})
 
     else:
 
         formulario = AvatarForm()
 
-        #Traerme las imagenes
-        imagen = Avatar()
-        imagen.img = request.FILES.get('img')
-        imagen.save()
-
-        #Comprobar si hay alguna img en la db
-        if imagen:
-
-        #Si hay filtrar la correspondiente
-            imagen_model = Avatar.objects.filter(user = request.user.id).order_by("-id")[0]
-            imagen_url = imagen_model.img.url
-
-        #Si no hay imagen_url = ""
-        else:
-
-            imagen_url  = ""
-
-        return render(request, "blogapp/perfil_user.html", {"usuarios": usuarios, "formulario": formulario, "imagen_url": imagen_url})
+    return render(request, "blogapp/agregar_foto.html", {"formulario": formulario, "usuarios": usuarios})
 
 
-def perfil_edit(request, id):
+#Editar username
+
+def editar_username(request, id):
 
     usuarios = User.objects.get(id=id)
+
+    usuario = request.user
+
+    imagen_model = Avatar.objects.filter(user=request.user.id).order_by("-id")
+
+    if request.method == "POST":
+
+        formulario = UserEditForm(request.POST)
+
+        if formulario.is_valid():
+
+            data = formulario.cleaned_data
+            usuario.username = data["username"]
+            usuario.save()
+
+            return redirect("home")
+
+    else:
+
+        if len(imagen_model) > 0:
+
+            formulario = UserEditForm(initial={"username": usuario.username})
+
+            imagen_url = imagen_model[0].img.url
+
+            return render(request, "blogapp/editar_username.html", {"usuarios": usuarios, "imagen_url": imagen_url, "formulario": formulario})
+
+        else:
+
+            formulario = UserEditForm(initial={"username": usuario.username})
+
+            imagen_url = ""
+
+            return render(request, "blogapp/editar_username.html", {"usuarios": usuarios, "imagen_url": imagen_url, "formulario": formulario})
+
+
+    formulario = UserEditForm(initial={"username": usuario.username})
+
+
+    return render(request, "blogapp/editar_username.html", {"usuarios": usuarios, "imagen_url": imagen_url, "formulario": formulario})
+
+
+#Editar foto
+
+def editar_foto(request, id):
+
+    usuarios = User.objects.get(id=id)
+
+    usuario = request.user
 
     imagen_model = Avatar.objects.filter(user = request.user.id).order_by("-id")[0]
     imagen_url = imagen_model.img.url
 
-    return render(request, "blogapp/perfil_edit.html", {"usuarios": usuarios, "imagen_url": imagen_url})
+    if request.method == "POST":
 
+        formulario = AvatarEditForm(request.FILES)
+
+        if formulario.is_valid():
+
+            data = formulario.cleaned_data
+            avatar = Avatar(user=usuario, img=data['img'])
+            avatar.save()
+
+            return redirect("home")
+
+    else:
+
+        formulario = AvatarEditForm(initial={"img": imagen_url})
+
+
+    return render(request, "blogapp/editar_username.html", {"usuarios": usuarios, "imagen_url": imagen_url, "formulario": formulario})

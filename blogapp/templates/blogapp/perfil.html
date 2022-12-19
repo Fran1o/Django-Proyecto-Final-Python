@@ -38,16 +38,13 @@ button:hover, a:hover {
 }
 </style>
 
-<br>
+
+
 <div class="card">
 
-    {% if imagen_url %}
+  {% if imagen_url %}
 
-    <div class="text_center">
-        <br>
-        <img style="max-height: 500px; max-width: 500px;" src="{{ imagen_url }}" style="width:100%">
-
-    </div>
+    <img src=" {{ imagen_url }} " style="width:100%">
 
     <h1 style="color:  rgb(66, 78, 246);;" class="h1 fw-light" > {{request.user.username}} </h1>
     <p class="title">Bienvenido a tu perfil</p>
@@ -56,16 +53,16 @@ button:hover, a:hover {
     <a href="#"><i class="fa fa-linkedin"></i></a>
     <a href="#"><i class="fa fa-facebook"></i></a>
 
-    <div class="d-grid">
-      <a href=" {% url 'perfil-editar' request.user.id %} "><button>Cambiar foto</button></a>
-      <br>
-      <a href=" {% url 'crear' request.user.id %} "><button>Publicar una mascota</button></a>
-    </div>
-
     
-    <br>
-
-    {% else %}
+        <div class="d-grid">
+            <button><a href="{% url 'editar-foto' request.user.id %}">Editar foto</a> </button>
+        </div>
+        <br>
+        <div class="d-grid">
+          <button><a href=" {% url 'editar-username' request.user.id %} ">Editar username</a> </button>
+        </div>
+  
+  {% else %}
 
     <img src="https://via.placeholder.com/400x350" style="width:100%">
 
@@ -76,26 +73,14 @@ button:hover, a:hover {
     <a href="#"><i class="fa fa-linkedin"></i></a>
     <a href="#"><i class="fa fa-facebook"></i></a>
 
-    <form method="post" enctype="multipart/form-data">
-
-        {% csrf_token %}
-    
-        {{ formulario.as_p }}
     
         <div class="d-grid">
-            <input class="btn btn-primary btn-lg" type="submit" value="Publicar">
+            <button><a href=" {% url 'agregar-foto' request.user.id %} ">Agregar foto</a> </button>
         </div>
-
         <br>
-
-    </form>
-
+        <div class="d-grid">
+          <button><a href=" {% url 'editar-username' request.user.id %} ">Editar username</a> </button>
+        </div>
     
-    
-
     {% endif %}
-
-    
-
-
 {% endblock %}

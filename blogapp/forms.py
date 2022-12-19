@@ -19,6 +19,7 @@ class UsuarioRegisterFormulario(UserCreationForm):
     apellido = forms.CharField(label="apellido")
     email = forms.EmailField(label="email")
     celular = forms.IntegerField(label="celular")
+    #img = forms.ImageField(label="No es obligatorio ingresar una foto ahora", required=False)
 
     class Meta:
         model = User
@@ -43,6 +44,33 @@ class AdoptarFormulario(forms.Form):
 
 class AvatarForm(forms.Form):
 
-
     model = User
     img = forms.ImageField(label="Ingrese una foto")
+    
+
+
+class UserEditForm(UserCreationForm):
+    
+    username = forms.CharField(label="Nuevo username")
+    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput, required=False)
+    password2 = forms.CharField(label="Repita su contraseña", widget=forms.PasswordInput, required=False)
+
+    class Meta:
+
+        model = User
+        fields = [ "username"]
+        exclude = ["password1", "password2"]
+
+class AvatarEditForm(UserCreationForm):
+    
+    img = forms.ImageField(label="Ingrese una foto", required=False)
+    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput, required=False)
+    password2 = forms.CharField(label="Repita su contraseña", widget=forms.PasswordInput, required=False)
+
+    class Meta:
+
+        model = User
+        fields = [ "img"]
+        exclude = ["password1", "password2"]
+
+
