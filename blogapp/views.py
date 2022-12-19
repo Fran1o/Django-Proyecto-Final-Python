@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from blogapp.models import Mascotas, Contacto, Adoptar, User, Avatar
-from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario, AvatarForm, UserEditForm, AvatarEditForm
+from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario, AvatarForm, UserEditForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -163,8 +163,7 @@ def agregar_foto(request, id):
 
                 imagen_url = imagen_model[0].img.url
 
-                return render(request, "blogapp/agregar_foto.html", {"usuarios": usuarios, "formulario": formulario, "imagen_url": imagen_url})
-
+                return redirect("home")
             else:
 
                 imagen_url = ""
@@ -193,7 +192,7 @@ def editar_username(request, id):
     usuario = request.user
 
     imagen_model = Avatar.objects.filter(user=request.user.id).order_by("-id")
-
+    
     if request.method == "POST":
 
         formulario = UserEditForm(request.POST)
@@ -210,7 +209,7 @@ def editar_username(request, id):
 
         if len(imagen_model) > 0:
 
-            formulario = UserEditForm(initial={"username": usuario.username})
+            formulario = UserEditForm()
 
             imagen_url = imagen_model[0].img.url
 
@@ -218,14 +217,14 @@ def editar_username(request, id):
 
         else:
 
-            formulario = UserEditForm(initial={"username": usuario.username})
+            formulario = UserEditForm()
 
             imagen_url = ""
 
             return render(request, "blogapp/editar_username.html", {"usuarios": usuarios, "imagen_url": imagen_url, "formulario": formulario})
 
-
-    formulario = UserEditForm(initial={"username": usuario.username})
+    
+    formulario = UserEditForm()
 
 
     return render(request, "blogapp/editar_username.html", {"usuarios": usuarios, "imagen_url": imagen_url, "formulario": formulario})
@@ -237,26 +236,28 @@ def editar_foto(request, id):
 
     usuarios = User.objects.get(id=id)
 
-    usuario = request.user
-
-    imagen_model = Avatar.objects.filter(user = request.user.id).order_by("-id")[0]
-    imagen_url = imagen_model.img.url
+    imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")
 
     if request.method == "POST":
 
-        formulario = AvatarEditForm(request.FILES)
+        formulario = AvatarForm(request.POST, request.FILES)
 
         if formulario.is_valid():
 
             data = formulario.cleaned_data
+            usuario = request.user
+
             avatar = Avatar(user=usuario, img=data['img'])
             avatar.save()
 
-            return redirect("home")
+            imagen_url = imagen_model[0].img.url
+
+        return render(request, "blogapp/editar_foto.html", {"formulario": formulario, "usuarios": usuarios, "imagen_url": imagen_url})
 
     else:
 
-        formulario = AvatarEditForm(initial={"img": imagen_url})
+        imagen_url = imagen_model[0].img.url
 
+        formulario = AvatarForm()
 
-    return render(request, "blogapp/editar_username.html", {"usuarios": usuarios, "imagen_url": imagen_url, "formulario": formulario})
+    return render(request, "blogapp/editar_foto.html", {"formulario": formulario, "usuarios": usuarios, "imagen_url": imagen_url})

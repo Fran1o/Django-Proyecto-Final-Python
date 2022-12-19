@@ -40,16 +40,16 @@ button:hover, a:hover {
 
 <br>
 <div class="card">
-
+  
   {% if imagen_url %}
 
     <div class="text_center">
-        <br>
-        <img style="max-height: 500px; max-width: 500px;" src="{{ imagen_url }}" style="width:100%">
+      <br>
+        <img style="max-height:700px; max-width: 500px;" src="{{ imagen_url }}" style="width:100%">
 
     </div>
 
-    <h1 style="color:  rgb(66, 78, 246);;" class="h1 fw-light" > {{request.user.username}} </h1>
+    <h1 style="color:  rgb(66, 78, 246);" class="h1 fw-light" > {{request.user.username}} </h1>
     <a href="#"><i class="fa fa-dribbble"></i></a>
     <a href="#"><i class="fa fa-twitter"></i></a>
     <a href="#"><i class="fa fa-linkedin"></i></a>
@@ -65,12 +65,14 @@ button:hover, a:hover {
             <input class="btn btn-primary btn-lg" type="submit" value="Aceptar">
         </div>
     </form>
+    <br>
 
     {% else %}
 
+    <br>
     <div class="text_center">
-      <br>
-      <img style="max-height: 500px; max-width: 500px;" src="https://via.placeholder.com/400x350" style="width:100%">
+      
+      <img style="max-height: 700pxpx; max-width: 500px;" src="https://via.placeholder.com/400x350" style="width:100%">
 
   </div>
 
@@ -89,7 +91,11 @@ button:hover, a:hover {
       <div class="d-grid">
           <input class="btn btn-primary btn-lg" type="submit" value="Aceptar">
       </div>
+
+      
   </form>
+
+  <br>
 
   {% endif %}
 

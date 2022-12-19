@@ -39,12 +39,17 @@ button:hover, a:hover {
 </style>
 
 
-
+<br>
 <div class="card">
+
 
   {% if imagen_url %}
 
-    <img src=" {{ imagen_url }} " style="width:100%">
+    <div class="text-center">
+      <br>
+      <img style="max-height: 700px; max-width: 500px;" src=" {{ imagen_url }} " style="width:100%">
+
+    </div>
 
     <h1 style="color:  rgb(66, 78, 246);;" class="h1 fw-light" > {{request.user.username}} </h1>
     <p class="title">Bienvenido a tu perfil</p>
@@ -61,6 +66,12 @@ button:hover, a:hover {
         <div class="d-grid">
           <button><a href=" {% url 'editar-username' request.user.id %} ">Editar username</a> </button>
         </div>
+        <br>
+        <div class="d-grid">
+          <button><a href=" {% url 'crear' request.user.id %} ">Agregar mascota</a> </button>
+        </div>
+
+        <br>
   
   {% else %}
 
@@ -81,6 +92,12 @@ button:hover, a:hover {
         <div class="d-grid">
           <button><a href=" {% url 'editar-username' request.user.id %} ">Editar username</a> </button>
         </div>
-    
+        <br>
+        <div class="d-grid">
+          <button><a href=" {% url 'crear' request.user.id %} ">Agregar mascota</a> </button>
+        </div>
+        
+</div>
+<br>
     {% endif %}
 {% endblock %}

@@ -61,16 +61,5 @@ class UserEditForm(UserCreationForm):
         fields = [ "username"]
         exclude = ["password1", "password2"]
 
-class AvatarEditForm(UserCreationForm):
-    
-    img = forms.ImageField(label="Ingrese una foto", required=False)
-    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput, required=False)
-    password2 = forms.CharField(label="Repita su contraseña", widget=forms.PasswordInput, required=False)
-
-    class Meta:
-
-        model = User
-        fields = [ "img"]
-        exclude = ["password1", "password2"]
 
 
