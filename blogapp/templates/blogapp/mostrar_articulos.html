@@ -33,7 +33,24 @@
         </div>
 
         {% endfor %}
-    
+    {% else %}
+
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+
+        <div class="text-center">
+
+            <div class="text-center">
+
+                <h5>No hay animales para adoptar!</h5>
+                <br>
+                <p>Ingrese en su perfil para poner un animalito en adopcion</p>
+                
+                <br>
+            </div>
+
+        </div>
+    </div>
+
     {% endif %}
 
 {% endblock %}

@@ -32,6 +32,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                        <form >
+                            <p>
+                                Nombre del curso: <input type="text" name="nombre_curso">
+                                <input type="submit" value="Buscar!">
+                            </p>
+                        </form>
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link active" aria-current="page" href=" {% url 'home' %} ">Home</a></li>
                         {% if request.user.is_authenticated%}
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>

@@ -10,7 +10,7 @@ class Coments(models.Model):
     fecha = models.DateField(default=datetime.now)
     
     def __str__(self):
-        return self.text
+        return self.contenido
 
 
 

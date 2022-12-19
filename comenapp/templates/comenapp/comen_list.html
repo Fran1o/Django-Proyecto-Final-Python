@@ -16,27 +16,23 @@
                     </div>
                     {% if list_comentarios %}
     
-                    {% for comen in list_comentarios %}
-                        <div class="col-md-3 mb-2">
-                            <div style="border-radius: 0.4em;
-                                        box-shadow: 0.3em 0.3em 0.7em #00000015;
-                                        transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                                        border: rgb(66, 78, 246) 0.2em solid;" class="card h-100">
-                       
-                            <div class="row justify-content-left"> <strong class="col-md-5 mb-2" >Autor: <h7>{{ comen.remitente }}</h7></strong></div><p>{{ comen.contenido }}</p><p style="color: rgb(237, 99, 99);" class="mb-1 text-muted">{{ comen.fecha }}</p>
+                        {% for comen in list_comentarios %}
+                            <div>
+                                <div style="border-radius: 0.4em;
+                                            box-shadow: 0.3em 0.3em 0.7em #00000015;
+                                            transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                                            border: rgb(66, 78, 246) 0.2em solid;" class="card h-100">
+                        
+                                <div> <strong class="col-md-5 mb-2" >Autor: <h7>{{ comen.remitente }}</h7></strong></div><p>{{ comen.contenido }}</p><p style="color: rgb(237, 99, 99);" class="mb-1 text-muted">{{ comen.fecha }}</p>
 
-                            </div>
-                        </div>    
-                    {% endfor %}
+                                </div>
+                            </div> 
+                            <br>
+                        {% endfor %}
                 
                     {% else %}
                     <p>No hay comentarios de momento</p>
                     {% endif %}
-                        
-
-    
-
-                        
 
                             <div class="coment">
                                 <div class="date">
@@ -47,14 +43,7 @@
                                 <strong>{{ coment.remitente }}</strong>
                                 <p>{{ coment.contenido|linebreaks }}</p>
                             </div>
-                            
-
-                        
-
-
-
-                        
-                        
+                                                   
                     </div>
                 </div>
             </div>
@@ -66,14 +55,14 @@
 
 <div class="text-center" >
 
-    <form method="post" >
+    <form  method="post" >
 
         {% csrf_token %}
                         
         {{ form_comentarios.as_p }}
         
         <div class="card-footer">
-            <input class="btn btn-primary btn-sm" type="submit" value="Comentar">
+            <input class="btn btn-primary btn-sm" type="submit" value="Comentar" >
         </div>
     
     </form>
