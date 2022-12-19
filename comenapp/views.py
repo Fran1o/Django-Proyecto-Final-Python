@@ -18,7 +18,7 @@ def form_comen(request):
             comentario = Coments(contenido=data["contenido"])
             comentario.save()
 
-        return render(request, "comenapp/comen_list.html", {"form_comentarios": fcomen, "listcomen": comen,})
+        return render(request, "comenapp/comen_list.html")
             
     else:
 
