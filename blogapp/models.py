@@ -30,9 +30,5 @@ class Adoptar(models.Model):
 
 class Avatar(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     img = models.ImageField(upload_to='fotosusuarios', null=True, blank=True)
-
-    
-
-

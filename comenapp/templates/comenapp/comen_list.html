@@ -1,6 +1,7 @@
 {% extends 'blogapp/index.html' %}
 
 {% block comentarios %}
+
 {% if errores %}
 <p style="color: red"> {{errores}} </p>
 {% endif %}
@@ -13,15 +14,17 @@
                         <div class="h1 fw-light" style="color: rgb(63, 63, 252);">Comentarios</div>
                         <p style="color: rgb(237, 99, 99);" class="mb-4 text-muted">inquietudes y sujerencias para ayudar a la comunidad</p>
                     </div>
-                    {% if listcomen %}
+                    {% if list_comentarios %}
     
-                    {% for comen in listcomen %}
+                    {% for comen in list_comentarios %}
                         <div class="col-md-3 mb-2">
                             <div style="border-radius: 0.4em;
                                         box-shadow: 0.3em 0.3em 0.7em #00000015;
                                         transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                                         border: rgb(66, 78, 246) 0.2em solid;" class="card h-100">
-                            <li>{{comen.contenido}}</li>
+                       
+                            <div class="row justify-content-left"> <strong class="col-md-5 mb-2" >Autor: <h7>{{ comen.remitente }}</h7></strong></div><p>{{ comen.contenido }}</p><p style="color: rgb(237, 99, 99);" class="mb-1 text-muted">{{ comen.fecha }}</p>
+
                             </div>
                         </div>    
                     {% endfor %}
@@ -30,6 +33,28 @@
                     <p>No hay comentarios de momento</p>
                     {% endif %}
                         
+
+    
+
+                        
+
+                            <div class="coment">
+                                <div class="date">
+                                    {{ coment.fecha }}
+                                  
+                        
+                                </div>
+                                <strong>{{ coment.remitente }}</strong>
+                                <p>{{ coment.contenido|linebreaks }}</p>
+                            </div>
+                            
+
+                        
+
+
+
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -37,19 +62,27 @@
     </div>
 
 
-                            
+{% if request.user.is_authenticated %}
+
+<div class="text-center" >
+
     <form method="post" >
 
         {% csrf_token %}
                         
         {{ form_comentarios.as_p }}
-{% if request.user.is_authenticated %}        
+        
         <div class="card-footer">
-            <input class="btn btn-primary btn-sm" type="submit" value="Comentar" class="nav-link" href="{% url 'contacto' %}">
+            <input class="btn btn-primary btn-sm" type="submit" value="Comentar">
         </div>
-
+    
     </form>
+
+</div>                            
+
 {% else %}
+
+<div class="text-center" >
 
     <form method="post" >
 
@@ -60,8 +93,10 @@
         <div style="background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);" class="card-footer">
             <p class="mb-4 text-muted">Recuerda que debes inicar sesion para dejar un comentario</p>
             <a class="btn btn-primary disabled" href="#!">Comentar</a>
-
+    
     </form>
+
+</div>
 {% endif %}
 
 

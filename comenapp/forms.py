@@ -1,7 +1,8 @@
 from django import forms
+from comenapp.models import *
 
-class ComentForm(forms.Form):
-    # remitente = forms.CharField(max_length=30)  
-    contenido = forms.CharField(max_length=1000)
-    # fecha = forms.DateField()
-
+class ComentForm(forms.ModelForm):
+    remitente = models.CharField(max_length=50)
+    class Meta:
+        model = Coments
+        fields = ('contenido',)

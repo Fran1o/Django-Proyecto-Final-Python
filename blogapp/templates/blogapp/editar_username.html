@@ -1,0 +1,104 @@
+{% extends 'blogapp/base_sin_footer.html' %}
+
+{% block contenido %}
+
+<style>
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+
+<br>
+<div class="card">
+  
+  {% if imagen_url %}
+
+    <div class="text_center">
+      <br>
+        <img style="max-height:700px; max-width: 500px;" src="{{ imagen_url }}" style="width:100%">
+
+    </div>
+
+    <h1 style="color:  rgb(66, 78, 246);" class="h1 fw-light" > {{request.user.username}} </h1>
+    <a href="#"><i class="fa fa-dribbble"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+
+    <form method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+    
+        {{ formulario.as_p }}
+    
+        <div class="d-grid">
+            <input class="btn btn-primary btn-lg" type="submit" value="Aceptar">
+        </div>
+    </form>
+    <br>
+
+    {% else %}
+
+    <br>
+    <div class="text_center">
+      
+      <img style="max-height: 700pxpx; max-width: 500px;" src="https://via.placeholder.com/400x350" style="width:100%">
+
+  </div>
+
+  <h1 style="color:  rgb(66, 78, 246);;" class="h1 fw-light" > {{request.user.username}} </h1>
+  <a href="#"><i class="fa fa-dribbble"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-linkedin"></i></a>
+  <a href="#"><i class="fa fa-facebook"></i></a>
+
+  <form method="post" enctype="multipart/form-data">
+
+      {% csrf_token %}
+  
+      {{ formulario.as_p }}
+  
+      <div class="d-grid">
+          <input class="btn btn-primary btn-lg" type="submit" value="Aceptar">
+      </div>
+
+      
+  </form>
+
+  <br>
+
+  {% endif %}
+
+
+
+{% endblock %}

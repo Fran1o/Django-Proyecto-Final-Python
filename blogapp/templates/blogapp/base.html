@@ -39,7 +39,7 @@
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
                             <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'lcomen' %}">Comentarios</a></li>
                             <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
-                            <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(159, 201, 255);" class="nav-link" href="{% url 'perfil' %}">Hola {{request.user.username}}!</a></li>
+                            <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(159, 201, 255);" class="nav-link" href="{% url 'perfil' request.user.id %}">Hola {{request.user.username}}!</a></li>
                         
 
                         {% else %}
