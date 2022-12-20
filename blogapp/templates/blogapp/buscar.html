@@ -1,0 +1,51 @@
+{% extends 'blogapp/index.html' %}
+
+
+{% block contenido %}
+
+
+{% if listado_mascotas %}
+
+
+{% for animales in listado_mascotas %}
+<div class="col-md-4 mb-5; text-center">
+    <div style="border-radius: 0.4em;
+                box-shadow: 0.3em 0.3em 0.7em #00000015;
+                transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                border: rgba(0, 0, 0, 0.655) 0.2em solid;" class="card h-100">
+        <div class="card-body; text-center;">
+            <div class="card-title" >
+                <h2> {{animales.nombre}} </h2>
+            </div>
+
+                {% if animales.imagen %}
+
+                    <img style="max-height: 300px;" class="img-fluid" src="{{ animales.imagen.url }}">                     
+
+                {% else %}
+
+                <img src="https://via.placeholder.com/400x350">
+
+                {% endif %}
+        </div>
+                <br>
+                <div class="card-footer">
+                    <a class="btn btn-primary btn-lg" href=" {% url 'mostrar-mascota' animales.id %} ">Mas info</a>
+                </div>
+                {% if animales.user_id == usuarios.id %}
+                <div class="card-footer">
+                    <a class="btn btn-succes btn-sm" href=" {% url 'editar-mascota' animales.id %} ">Editar</a>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-succes btn-sm" href=" {% url 'eliminar-mascota' animales.id %} ">Eliminar</a>
+                </div>
+                {% endif %}
+    </div>
+        <br>
+</div>
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+{% endblock %}

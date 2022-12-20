@@ -33,11 +33,12 @@
                     
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                        <form >
-                            <p style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);">
-                                Buscar animales: <input type="text" name="nombre_curso">
-                                <input type="submit" value="&#128270;">
+                        <form action="{% url 'busqueda' request.user.id %}" method="get">
+
+                            <p>
+                                <input type="text" name="animal"><input type="submit" value="&#128270;">
                             </p>
+                                
                         </form>
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link active" aria-current="page" href=" {% url 'home' %} ">Home</a></li>
                         {% if request.user.is_authenticated%}
