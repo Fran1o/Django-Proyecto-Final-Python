@@ -314,7 +314,20 @@ def editar_foto(request, id):
 
     return render(request, "blogapp/editar_foto.html", {"formulario": formulario, "usuarios": usuarios, "imagen_url": imagen_url})
 
+def resultado_busqueda(request, id):
+    usuarios = User.objects.get(id=id)
+    if request.GET:
 
+        animal = request.GET.get("animal","")
+        if animal == "":
+            animales = []
+        else:
+            animales = Mascotass.objects.filter(animal__icontains=animal)
+
+        return render(request, "blogapp/buscar.html", {"listado_mascotas": animales,"usuario":usuarios})
+
+    return render(request, "blogapp/buscar.html", {"listado_mascotas": []})
+    
 
 
 
