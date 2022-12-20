@@ -1,13 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from blogapp.models import Mascotass
 
 class MascotaFormulario(forms.Form):
 
     nombre = forms.CharField(max_length=200)
     animal = forms.CharField(max_length=200)
-    raza = forms.CharField(max_length=100)
-    edad = forms.CharField(max_length=100)
+    raza = forms.CharField(max_length=100, required=False)
+    edad = forms.CharField(max_length=100, required=False)
     color = forms.CharField(max_length=200)
     imagen = forms.ImageField()
 
@@ -60,6 +61,19 @@ class UserEditForm(UserCreationForm):
         model = User
         fields = [ "username"]
         exclude = ["password1", "password2"]
+
+
+class MascotasEditForm(forms.Form):
+
+    nombre = forms.CharField(max_length=200, required=False)
+    animal = forms.CharField(max_length=200, required=False)
+    raza = forms.CharField(max_length=100, required=False)
+    edad = forms.CharField(max_length=100, required=False)
+    color = forms.CharField(max_length=200, required=False)
+    imagen = forms.ImageField()
+    
+    model = Mascotass
+
 
 
 

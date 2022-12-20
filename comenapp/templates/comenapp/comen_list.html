@@ -24,8 +24,13 @@
                                             border: rgb(66, 78, 246) 0.2em solid;" class="card h-100">
                         
                                 <div> <strong class="col-md-5 mb-2" >Autor: <h7>{{ comen.remitente }}</h7></strong></div><p>{{ comen.contenido }}</p><p style="color: rgb(237, 99, 99);" class="mb-1 text-muted">{{ comen.fecha }}</p>
-
-                                </div>
+                                
+                                {% if comen.remitente_id == usuarios.id  %}
+                                
+                                    <div class="card-footer"><a class="btn btn-danger btn-sm" href=" {% url 'eliminar-comentario' comen.id %} ">Eliminar</a></div>
+                                {% endif %}
+                                    </div>
+                                
                             </div> 
                             <br>
                         {% endfor %}

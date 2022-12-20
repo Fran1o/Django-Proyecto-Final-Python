@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
-from blogapp.models import Mascotas, Contacto, Adoptar, User, Avatar
-from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario, AvatarForm, UserEditForm
+from blogapp.models import Mascotass, Contacto, Adoptar, User, Avatar
+from blogapp.forms import MascotaFormulario, ContactoFormulario, AdoptarFormulario, AvatarForm, UserEditForm, MascotasEditForm
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
-#Form para crear mascotas
-
+#FORM CREAR MASCOTAS
+@login_required
 def crear_articulo(request, id):
 
     usuarios = User.objects.get(id=id)
+    usuario = request.user
 
     if request.method == "POST":
         formulario = MascotaFormulario(request.POST, request.FILES)
@@ -16,7 +18,7 @@ def crear_articulo(request, id):
         if formulario.is_valid():
 
             data = formulario.cleaned_data
-            mascotas = Mascotas(nombre=data["nombre"], animal=data["animal"], raza=data["raza"], edad=data["edad"], color=data["color"], imagen=data["imagen"] )
+            mascotas = Mascotass(user = usuario, nombre=data["nombre"], animal=data["animal"], raza=data["raza"], edad=data["edad"], color=data["color"], imagen=data["imagen"] )
             mascotas.save()
 
         return redirect("home")
@@ -27,11 +29,14 @@ def crear_articulo(request, id):
 
     return render(request, "blogapp/crear_articulo_form.html", {"formulario": formulario, "usuarios": usuarios})
 
-#Mostrando mascotas
+
+#MOSTRANDO MASCOTAS EN INDEX
 
 def mostrar_articulos(request):
 
-    mascotas = Mascotas.objects.all()
+    mascotas = Mascotass.objects.all()
+
+    usuario = request.user
 
     if request.method == "POST":
 
@@ -39,7 +44,7 @@ def mostrar_articulos(request):
 
         if formulario.is_valid():
 
-            mascotas = Mascotas()
+            mascotas = Mascotass()
             mascotas.nombre = request.POST.get('nombre')
             mascotas.animal = request.POST.get('animal')
             mascotas.raza = request.POST.get('raza')
@@ -52,18 +57,89 @@ def mostrar_articulos(request):
 
     else:
 
-        return render(request, "blogapp/mostrar_articulos.html", {"mascotas": mascotas})
 
-#Views para mostrar info mascotas
+        return render(request, "blogapp/mostrar_articulos.html", {"mascotas": mascotas, "usuarios": usuario})
+
+
+#INFORMACION COMPLETA MASCOTAS
 
 def mostrar_articulo_completo(request, id):
 
-    mascotas = Mascotas.objects.get(id=id)
+    mascotas = Mascotass.objects.get(id=id)
 
     return render(request, "blogapp/mostrar_articulo_completo.html", {"mascotas": mascotas})
 
-#Form contacto
 
+
+#FORM ADOPTAR MASCOTA
+@login_required
+def funcion_adoptar(request, id):
+
+    mascotas = Mascotass.objects.get(id=id)
+
+    if request.method == "POST":
+        formulario = AdoptarFormulario(request.POST)
+
+        if formulario.is_valid():
+
+            data = formulario.cleaned_data
+            infoadoptante = Adoptar(nombre=data["nombre"], apellido=data["apellido"], celular=data["celular"], direccion=data["direccion"])
+            infoadoptante.save()
+
+        return redirect("adopt")
+
+    else:
+
+        formulario = AdoptarFormulario()
+
+    return render(request, "blogapp/form_adoptar.html", {"formulario": formulario, "mascotas": mascotas})
+
+def adopt(request):
+
+    return render(request, "blogapp/adopt.html")
+
+
+#FORM EDITAR MASCOTA
+@login_required
+def editar_mascota(request, id):
+
+    mascotas = Mascotass.objects.get(id=id)
+    usuarios = request.user
+
+    if request.method == "POST":
+        formulario = MascotasEditForm(request.POST, request.FILES)
+
+        if formulario.is_valid():
+
+            data = formulario.cleaned_data
+            mascotas.nombre = data["nombre"]
+            mascotas.animal = data["animal"]
+            mascotas.raza = data["raza"]
+            mascotas.edad = data["edad"]
+            mascotas.color = data["color"]
+            mascotas.imagen = data["imagen"]
+            mascotas.save()
+
+        return redirect("home")
+
+    else:
+
+        formulario = MascotasEditForm(initial={"nombre":mascotas.nombre, "animal":mascotas.animal,"raza":mascotas.raza, "edad":mascotas.edad, "color":mascotas.color, "imagen":mascotas.imagen})
+
+    return render(request, "blogapp/editar_mascotas.html", {"formulario": formulario, "mascotas": mascotas, "usuarios": usuarios})
+
+
+#FORM ELIMINAR MASCOTA
+@login_required
+def eliminar_mascota(request, id):
+    
+    mascota = Mascotass.objects.get(id=id)
+    mascota.delete()
+
+    return redirect("home")
+
+
+#FORM CONTACTO
 def contacto(request):
 
     if request.method == "POST":
@@ -83,38 +159,10 @@ def contacto(request):
 
     return render(request, "blogapp/contacto.html", {"formulario": formulario})
 
-#Form adoptar mascota
 
-def funcion_adoptar(request, id):
+#------------------------------------------------------------------PERFIL DEL USUARIO----------------------------------------------------------
 
-    mascotas = Mascotas.objects.get(id=id)
-
-    if request.method == "POST":
-        formulario = AdoptarFormulario(request.POST)
-
-        if formulario.is_valid():
-
-            data = formulario.cleaned_data
-            infoadoptante = Adoptar(nombre=data["nombre"], apellido=data["apellido"], celular=data["celular"], direccion=data["direccion"])
-            infoadoptante.save()
-
-        return redirect("adopt")
-
-    else:
-
-        formulario = AdoptarFormulario()
-
-    return render(request, "blogapp/form_adoptar.html", {"formulario": formulario, "mascotas": mascotas})
-
-
-def adopt(request):
-
-    return render(request, "blogapp/adopt.html") 
-
-
-#Perfil del usuario
 @login_required
-
 def perfil_user(request, id):
 
     usuarios = User.objects.get(id=id)
@@ -139,8 +187,9 @@ def perfil_user(request, id):
     return render(request, "blogapp/perfil.html", {"usuarios": usuarios, "imagen_url": imagen_url})
 
 
-#Agregar foto
+#AGREGAR FOTO
 
+@login_required
 def agregar_foto(request, id):
 
     usuarios = User.objects.get(id=id)
@@ -183,8 +232,9 @@ def agregar_foto(request, id):
     return render(request, "blogapp/agregar_foto.html", {"formulario": formulario, "usuarios": usuarios})
 
 
-#Editar username
+#EDITAR USERNAME
 
+@login_required
 def editar_username(request, id):
 
     usuarios = User.objects.get(id=id)
@@ -230,8 +280,10 @@ def editar_username(request, id):
     return render(request, "blogapp/editar_username.html", {"usuarios": usuarios, "imagen_url": imagen_url, "formulario": formulario})
 
 
-#Editar foto
 
+#EDITAR FOTO
+
+@login_required
 def editar_foto(request, id):
 
     usuarios = User.objects.get(id=id)
@@ -261,3 +313,8 @@ def editar_foto(request, id):
         formulario = AvatarForm()
 
     return render(request, "blogapp/editar_foto.html", {"formulario": formulario, "usuarios": usuarios, "imagen_url": imagen_url})
+
+
+
+
+

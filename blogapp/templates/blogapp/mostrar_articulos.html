@@ -26,9 +26,18 @@
 
                         {% endif %}
                 </div>
+                <br>
                 <div class="card-footer">
-                    <a class="btn btn-primary btn-sm" href=" {% url 'mostrar-mascota' mascota.id %} ">Mas info</a>
+                    <a class="btn btn-primary btn-lg" href=" {% url 'mostrar-mascota' mascota.id %} ">Mas info</a>
                 </div>
+                {% if mascota.user_id == usuarios.id  %}
+                <div class="card-footer">
+                    <a class="btn btn-succes btn-sm" href=" {% url 'editar-mascota' mascota.id %} ">Editar</a>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-succes btn-sm" href=" {% url 'eliminar-mascota' mascota.id %} ">Eliminar</a>
+                </div>
+                {% endif %}
             </div>
         </div>
 

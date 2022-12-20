@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Mascotas(models.Model):
+class Mascotass(models.Model):
 
     nombre = models.CharField(max_length=200)
     animal = models.CharField(max_length=200)
@@ -11,6 +11,7 @@ class Mascotas(models.Model):
     edad = models.CharField(max_length=100)
     color = models.CharField(max_length=200)
     imagen = models.ImageField(upload_to='fotosmascotas', null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Contacto(models.Model):
 

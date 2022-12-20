@@ -8,6 +8,8 @@ urlpatterns = [
     path('', mostrar_articulos, name="home"),
     path('creararticulo/<id>', crear_articulo, name="crear"),
     path('mascota/<id>', mostrar_articulo_completo, name="mostrar-mascota"),
+    path("editarmascota/<id>", editar_mascota, name="editar-mascota"),
+    path("eliminarmascota/<id>", eliminar_mascota, name="eliminar-mascota"),
     
     path("signup/", signup, name="signup"),
     path("login/", login, name="login"),
