@@ -329,5 +329,8 @@ def resultado_busqueda(request, id):
     return render(request, "blogapp/buscar.html", {"listado_mascotas": []})
     
 
+def acerca(request):
+
+    return render(request, "blogapp/Acerca_de.html")
 
 
