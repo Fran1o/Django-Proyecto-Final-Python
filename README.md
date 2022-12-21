@@ -1,3 +1,15 @@
+# ANIMADOP
+
+¿Qué es Animadop?
+
+Es un proyecto destinado a ayudar a la comunidad de personas que se dedica a buscar y cuidar animales que necesitan un hogar,
+la idea es facilitar y integrar a personas que ayuden a la causa y puedan tambien adoptar a un animalito con su debido seguimiento
+ya que esta obtiene datos de usuario recopilando infromacion para tener un merjo contacto con las persona que adoptan o ponen en 
+adopcion a animalitos.
+
+Video a modo de demostracion de el proyecto:
+
+
 # Proyecto final de coderhouse
 Integrantes:
 1_Francisco Gonzales
@@ -31,7 +43,9 @@ Integrantes:
     .agregar Avatar
     .Mas info de los articulos
   __Manejo de errores y su correcion los git.
-
+# Instalaciónes para el desarrollo:
+	Django
+	Pillow
 
 # Funcionamiento:
 
