@@ -29,6 +29,8 @@ urlpatterns = [
     path("comentarios/", include('comenapp.urls')),
 
     path("busqueda/<id>", resultado_busqueda, name="busqueda"),
+
+    path("Acerca_de/", acerca, name="Acerca"),
 ]
 
 
