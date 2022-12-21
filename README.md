@@ -7,7 +7,7 @@ Integrantes:
 
 # Distribucion de trabajos:
 
-# Diego:
+# Diego Ibarra:
   _Generar templates de login y register.
   _Crear los modelos de registro y los formularios correspondientes.
   _Participacion en la tematica de el blog.
@@ -17,7 +17,7 @@ Integrantes:
   _Manejo de errores y su correcion los git
   _Participacion en la tematica de el blog
   _Correcciones en los templates
-  _
+  _Creaciond de las busquedas y las partes asociadas
   
 # Francisco Gonzalez:
   _Creacion de los templates principales de ¨Base¨ y las relaciones entre los demas teamplates.
@@ -35,5 +35,21 @@ Integrantes:
 
 # Funcionamiento:
 
-Home
+Home:http://127.0.0.1:8000/
 
+Login:http://127.0.0.1:8000/login/
+  .Registrar
+  .Iniciar sesion
+
+Comentarios:http://127.0.0.1:8000/comentarios/lcomen/
+  .Comentar
+
+Contacto:http://127.0.0.1:8000/contacto/
+
+Perfil(Hola "Usuario"):http://127.0.0.1:8000/perfil/
+  .Subir Avatar:http://127.0.0.1:8000/addfoto/
+  .Editar Avatar:http://127.0.0.1:8000/editarfoto/
+  .Editar Nombre:http://127.0.0.1:8000/perfileditav/
+  .Agregar mascota:http://127.0.0.1:8000/creararticulo/
+  
+Acerca de:http://127.0.0.1:8000/Acerca_de/
