@@ -40,6 +40,7 @@
                             </p>
                                 
                         </form>
+
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link active" aria-current="page" href=" {% url 'home' %} ">Home</a></li>
                         {% if request.user.is_authenticated%}
                         <li class="nav-item"><a style="font-family: 'Zen Dots', cursive; color: rgb(66, 78, 246);" class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
