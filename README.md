@@ -8,12 +8,12 @@ Integrantes:
 # Distribucion de trabajos:
 
 # Diego Ibarra:
-  _Generar templates de login y register.
-  _Crear los modelos de registro y los formularios correspondientes.
-  _Participacion en la tematica de el blog.
+  *Generar templates de login y register.
+  *Crear los modelos de registro y los formularios correspondientes.
+  *Participacion en la tematica de el blog.
 
 # Juan Carlos Nieto:
-  _Creacion de aplicacion de comentarios, se agrego los modelos y registros correspondientes
+  *Creacion de aplicacion de comentarios, se agrego los modelos y registros correspondientes
   _Manejo de errores y su correcion los git
   _Participacion en la tematica de el blog
   _Correcciones en los templates
