@@ -7,12 +7,14 @@ la idea es facilitar y integrar a personas que ayuden a la causa y puedan tambie
 ya que esta obtiene datos de usuario recopilando infromacion para tener un merjo contacto con las persona que adoptan o ponen en 
 adopcion a animalitos.
 
-Video a modo de demostracion de el proyecto:
+Video a modo de demostracion:
+
+LINK: 
 
 
 # Proyecto final de coderhouse
 Integrantes:
-1_Francisco Gonzales
+1_Francisco Gonzalez
 2_Juan Carlos Nieto
 3_Diego 
 
@@ -32,16 +34,21 @@ Integrantes:
   _Creaciond de las busquedas y las partes asociadas
   
 # Francisco Gonzalez:
-  _Creacion de los templates principales de ¨Base¨ y las relaciones entre los demas teamplates.
-  _Manejo de errores y sus correciones.
+  _Primeros pasos en la iniciacion de la app, creacion de blogapp
   _Participacion en la tematica de el blog.
+  _Creacion de los templates principales de ¨Base¨ y las relaciones entre los demas teamplates.
+  _Corecciones de estetica en todos los formularios
+  _Manejo de errores y sus correciones.
   _Creacion de modelos y sus html
-    .Perfil de usuario
-    .Creacion de articulos(animales)
+  _Creacion de los botones de estos articulos (animales) y sus respectivas funciones:
+    .Editar mascota y eliminar
+  _Creacion de perfil usuario completo + botones y funciones
+    .Edicion de pefil (formularios y views.py)
     .Formularios de datos de usuario de adopcion
-    .Formulario de edicion de perfil
-    .agregar Avatar
+    .Formulario de contacto
+    .Agregar y editar Avatar (formularios y views.py)
     .Mas info de los articulos
+    .90% de las views.py en blogapp
   __Manejo de errores y su correcion los git.
 # Instalaciónes para el desarrollo:
 	Django
@@ -52,8 +59,10 @@ Integrantes:
 Home:http://127.0.0.1:8000/
 
 Login:http://127.0.0.1:8000/login/
-  .Registrar
   .Iniciar sesion
+
+Signup: http://127.0.0.1:8000/signup/
+  .Registrarse
 
 Comentarios:http://127.0.0.1:8000/comentarios/lcomen/
   .Comentar
