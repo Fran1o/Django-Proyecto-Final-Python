@@ -1,5 +1,4 @@
 {% extends 'blogapp/index.html' %}
-
 {% block comentarios %}
 
 {% if errores %}
@@ -58,14 +57,14 @@
 
 {% if request.user.is_authenticated %}
 
-<div class="text-center" >
+<div  class="text-center"  >
 
     <form  method="post" >
 
         {% csrf_token %}
-                        
-        {{ form_comentarios.as_p }}
-        
+            <div class="form_comentarios_container">                
+                {{ form_comentarios.as_p }}
+            </div>
         <div class="card-footer">
             <input class="btn btn-primary btn-sm" type="submit" value="Comentar" >
         </div>
