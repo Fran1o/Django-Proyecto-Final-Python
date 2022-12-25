@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Coments(models.Model):
     
     remitente = models.ForeignKey(User, on_delete=models.CASCADE)
-    contenido = models.CharField(max_length=1000)
+    contenido = models.TextField()
     fecha = models.DateField(default=datetime.now)
     
     def __str__(self):

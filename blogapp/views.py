@@ -108,10 +108,11 @@ def editar_mascota(request, id):
     usuarios = request.user
 
     if request.method == "POST":
+
         formulario = MascotasEditForm(request.POST, request.FILES)
 
         if formulario.is_valid():
-
+            
             data = formulario.cleaned_data
             mascotas.nombre = data["nombre"]
             mascotas.animal = data["animal"]
@@ -126,7 +127,7 @@ def editar_mascota(request, id):
     else:
 
         formulario = MascotasEditForm(initial={"nombre":mascotas.nombre, "animal":mascotas.animal,"raza":mascotas.raza, "edad":mascotas.edad, "color":mascotas.color})
-
+        # initial={"nombre":mascotas.nombre, "animal":mascotas.animal,"raza":mascotas.raza, "edad":mascotas.edad, "color":mascotas.color, "imagen":mascotas.imagen}
     return render(request, "blogapp/editar_mascotas.html", {"formulario": formulario, "mascotas": mascotas, "usuarios": usuarios})
 
 
@@ -305,7 +306,7 @@ def editar_foto(request, id):
 
             imagen_url = imagen_model[0].img.url
 
-        return render(request, "blogapp/editar_foto.html", {"formulario": formulario, "usuarios": usuarios, "imagen_url": imagen_url})
+        return render(request, "blogapp/perfil.html", {"formulario": formulario, "usuarios": usuarios, "imagen_url": imagen_url})
 
     else:
 

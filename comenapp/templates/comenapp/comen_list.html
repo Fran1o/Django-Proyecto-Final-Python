@@ -1,5 +1,4 @@
 {% extends 'blogapp/index.html' %}
-
 {% block comentarios %}
 
 {% if errores %}
@@ -58,15 +57,25 @@
 
 {% if request.user.is_authenticated %}
 
+<<<<<<< HEAD
 
 <div class="text-center" >
+=======
+<div  class="text-center"  >
+>>>>>>> 50ac336557548b725455d89f2e024e6071bfa944
 
     <form  method="post">
 
         {% csrf_token %}
+<<<<<<< HEAD
 
             {{ form_comentarios.as_p }}
         
+=======
+            <div class="form_comentarios_container">                
+                {{ form_comentarios.as_p }}
+            </div>
+>>>>>>> 50ac336557548b725455d89f2e024e6071bfa944
         <div class="card-footer">
             <input class="btn btn-primary btn-sm" type="submit" value="Comentar" >
         </div>
