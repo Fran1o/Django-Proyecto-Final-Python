@@ -44,6 +44,8 @@ def mostrar_articulos(request):
 
         if formulario.is_valid():
 
+
+
             mascotas = Mascotass()
             mascotas.nombre = request.POST.get('nombre')
             mascotas.animal = request.POST.get('animal')
@@ -98,7 +100,6 @@ def adopt(request):
 
     return render(request, "blogapp/adopt.html")
 
-
 #FORM EDITAR MASCOTA
 @login_required
 def editar_mascota(request, id):
@@ -124,7 +125,7 @@ def editar_mascota(request, id):
 
     else:
 
-        formulario = MascotasEditForm(initial={"nombre":mascotas.nombre, "animal":mascotas.animal,"raza":mascotas.raza, "edad":mascotas.edad, "color":mascotas.color, "imagen":mascotas.imagen})
+        formulario = MascotasEditForm(initial={"nombre":mascotas.nombre, "animal":mascotas.animal,"raza":mascotas.raza, "edad":mascotas.edad, "color":mascotas.color})
 
     return render(request, "blogapp/editar_mascotas.html", {"formulario": formulario, "mascotas": mascotas, "usuarios": usuarios})
 

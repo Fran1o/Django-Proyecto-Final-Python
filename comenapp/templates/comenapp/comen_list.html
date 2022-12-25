@@ -58,13 +58,14 @@
 
 {% if request.user.is_authenticated %}
 
+
 <div class="text-center" >
 
-    <form  method="post" >
+    <form  method="post">
 
         {% csrf_token %}
-                        
-        {{ form_comentarios.as_p }}
+
+            {{ form_comentarios.as_p }}
         
         <div class="card-footer">
             <input class="btn btn-primary btn-sm" type="submit" value="Comentar" >
